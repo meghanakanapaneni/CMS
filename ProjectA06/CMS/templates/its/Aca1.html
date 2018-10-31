@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>ProjectA06</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+    <div class="container">
+      <a href="{% url 'homepage' %}" class="navbar-brand"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 32px; height: 32px; margin-right: 8px;">ProjectA06</a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item px-2">
+            <a href="{% url 'homepage' %}" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item dropdown mr-3">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i ></i> Academics
+              </a>
+              <div class="dropdown-menu">
+                <a href="{% url 'aca1' %}" class="dropdown-item">
+                  <i class="fas fa-dot"></i> Under Graduate Programs
+                </a>
+                <a href="{% url 'aca2' %}" class="dropdown-item">
+                   <i class="fas fa-dot"></i> Faculty
+                </a>
+               </div>
+            </li>
+          <li class="nav-item px-2">
+            <a href="{% url 'about' %}" class="nav-link">About</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="{% url 'contact' %}" class="nav-link">Contact Us</a>
+          </li>
+        
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown mr-3">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="fas fa-user"></i> Login
+              </a>
+              <div class="dropdown-menu">
+                <a href="https://serene-wildwood-35121.herokuapp.com/login/5bd892288e583700150e4dd5"" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> Student
+                </a>
+                <a href="{% url 'facultylogin' %}" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> Faculty
+                </a>
+                <a href="{% url 'adminlogin' %}" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> Admin
+                </a>
+              </div>
+            </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>
+            <i class="fas fa-book"></i> Academics</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+  <br>
+  
+  <!-- POSTS -->
+  <section id="posts">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Under Graduate Programs</h4>
+            </div>
+            
+            <table cellspacing="0" cellpadding="7">
+                    <colgroup>
+                    <col>
+                    <col> </colgroup>
+                    <tbody>
+                    <tr>
+                    <th bgcolor="#ffe599">
+                    <b>Institute Core (Common to CSE &amp; ECE)</b>
+                    </th>
+                    <th bgcolor="#ffe599">
+                    <b>Program Core (CSE)</b>
+                    </th>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Computer Programming
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Database Management Systems
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Data Structures
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Artificial Intelligence
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Computer Organization
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Artificial Intelligence and Machine Learning
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Algorithms
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Theory of Computation
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Operating Systems
+                    </td>
+                    <td bgcolor="#ffe599">
+                    <b>Program Core (ECE)</b>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Computer Architecture
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Linear Electronic Circuits
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Computer Architecture
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Introduction to VLSI
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    IT Workshop I
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Digital Communication Systems
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    IT Workshop -II
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Speech Signal Processing
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    IT Workshop III
+                    </td>
+                    <td bgcolor="#ffe599">
+                    <b>Bouquet (CSE)</b>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    IT Systems (*)
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Advanced Algorithms
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Mathematics I
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Compilers
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Mathematics II
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Compiler Design
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Mathematics III
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Programming Systems
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Digital Logic Design
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Computer Systems Security
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Electrical Science
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Information Retrieval
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Basic Electronic Circuits
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Software Engineering
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Digital Signal Analysis and Applications
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Distributed Computing
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Fundamentals of Communication
+                    </td>
+                    <td bgcolor="#ffe599">
+                    <b>Bouquet (ECE)</b>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Computer and Communication Networks
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Electro Magnetic Theory
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Embedded and Intelligent Systems
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Information Theory and Coding
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Humanities (Communication Skills-1)
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Modern Control Systems
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Communication Skills-2-Intermediate
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Applied DSP
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Communication Skills-3-Intermediate
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Wireless Communication
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Communication Skills-2-Advanced
+                    </td>
+                    <td bgcolor="#ffe599">
+                    <b>Honours</b>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    Communication Skills-3-Advanced
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Honours -1
+                    </td>
+                    </tr>
+                    <tr>
+                    <td bgcolor="#ffffff">
+                    &nbsp;
+                    </td>
+                    <td bgcolor="#ffffff">
+                    Honours -2
+                    </td>
+                    </tr>
+                    </tbody>
+                    </table>
+            
+          </div>
+          <center><strong>*****Please note: List of courses are subject to revision and is for reference purpose only</strong></center>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p class="lead text-center">
+            Copyright &copy;
+            <span id="year"></span>
+            ProjectA06
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+  </script>
+</body>
+
+</html>

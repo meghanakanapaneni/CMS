@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>ProjectA06</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+    <div class="container">
+      <a href="{% url 'homepage' %}" class="navbar-brand"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 32px; height: 32px; margin-right: 8px;">ProjectA06</a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item px-2">
+            <a href="{% url 'homepage' %}" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item dropdown mr-3">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i ></i> Academics
+              </a>
+              <div class="dropdown-menu">
+                <a href="{% url 'aca1' %}" class="dropdown-item">
+                  <i class="fas fa-dot"></i> Under Graduate Programs
+                </a>
+                <a href="{% url 'aca2' %}" class="dropdown-item">
+                   <i class="fas fa-dot"></i> Faculty
+                </a>
+               </div>
+            </li>
+          <li class="nav-item px-2">
+            <a href="{% url 'about' %}" class="nav-link">About</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="{% url 'contact' %}" class="nav-link">Contact Us</a>
+          </li>
+        
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown mr-3">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="fas fa-user"></i> Login
+              </a>
+              <div class="dropdown-menu">
+                <a href="https://serene-wildwood-35121.herokuapp.com/login/5bd892288e583700150e4dd5"" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> Student
+                </a>
+                <a href="{% url 'facultylogin' %}" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> Faculty
+                </a>
+                <a href="{% url 'adminlogin' %}" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> Admin
+                </a>
+              </div>
+            </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>
+            <i class="fas fa-book"></i> Academics</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+  <br>
+  
+  <!-- POSTS -->
+  <section id="posts">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Faculty</h4>
+            </div>
+            <div id="pl-1787" class="panel-layout"><div id="pg-1787-0" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-0"><div id="pgc-1787-0-0" class="panel-grid-cell"><div id="panel-1787-0-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="0"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-0-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>In order to meet the present and future geo-socio-economic needs, we lay great emphasis on recruiting world class faculty who are strong in teaching and research areas.</p>
+                    <p>Our faculty is our biggest asset and can be compared with the best in the country and also in their domains. All regular faculty members hold Ph.Ds from the finest institutes across the globe with minimum of three years of post-doctoral experience and almost all have significant global exposure. They have published papers in various national and international journals and conference proceedings and attended / organized several workshops, both at national and international level.</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-1" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-1"><div id="pgc-1787-1-0" class="panel-grid-cell"><div id="panel-1787-1-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="1"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-1-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr-Anish.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-1-1" class="panel-grid-cell"><div id="panel-1787-1-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="2"><div class="facultyy panel-widget-style panel-widget-style-for-1787-1-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://sites.google.com/site/turlapatyanish/Home" rel="noopener" target="_blank">Dr. Anish Chand Turlapaty</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (Mississippi State University)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Theory and application of statistical signal processing in the areas of radar and wearable robotics. Application of pattern recognition in the areas of image processing, remote sensing and wearable robotics.</p>
+                    <p><a href="mailto:anish.turlapaty@iiits.in">anish.turlapaty@iiits.in</a>, <a href="tel:+918897952968">+91 88979 52968</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-2" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-2"><div id="pgc-1787-2-0" class="panel-grid-cell"><div id="panel-1787-2-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="3"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-2-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/07/balaji.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-2-1" class="panel-grid-cell"><div id="panel-1787-2-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="4"><div class="facultyy panel-widget-style panel-widget-style-for-1787-2-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://balajiraman.wordpress.com/" rel="noopener" target="_blank">Dr Balaji Raman</a></h3>
+                    <p>Associate Professor<br>
+                    PhD (National University of Singapore, Singapore)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Analytical Models for Performance Evaluation of Computer Systems, Computer System Architecture, Embedded Systems, Multimedia Systems, Computational Biology, Bio-informatics, Model Checking, Mixed-Signal Simulation. Has the speciﬁc interest in System-level-design of Multi-Processor System-on-chip devices.</p>
+                    <p><a href="mailto:balaji.r@iiits.in"> balaji.r@iiits.in</a>, +91 9573988355<br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-3" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-3"><div id="pgc-1787-3-0" class="panel-grid-cell"><div id="panel-1787-3-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="5"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-3-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/07/balasubramanian.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-3-1" class="panel-grid-cell"><div id="panel-1787-3-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="6"><div class="facultyy panel-widget-style panel-widget-style-for-1787-3-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="#" rel="noopener">Dr. Balasubramanian (Subu) Kandaswamy</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (Northwestern University, USA)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Transfer Learning, Cognitive Modeling, Cross Domain Knowledge Transfer, Analogy and Representation learning</p>
+                    <p><a href="mailto:subu.k@iiits.in"> subu.k@iiits.in</a>, +91 9381339942<br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-4" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-4"><div id="pgc-1787-4-0" class="panel-grid-cell"><div id="panel-1787-4-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="7"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-4-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/06/Hrishikesh-1.png" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-4-1" class="panel-grid-cell"><div id="panel-1787-4-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="8"><div class="facultyy panel-widget-style panel-widget-style-for-1787-4-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://sites.google.com/site/hrishikeshvenkataraman/" rel="noopener" target="_blank">Dr. Hrishikesh Venkataraman</a></h3>
+                    <p>Associate professor<br>
+                    PhD (Jacobs University Bremen, Germany)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Networking and communication aspect for Smart Cities , Cellular to WiFi, Small Cells, C-RAN , Vehicular communication and networks, Analytics based recommender system.</p>
+                    <p><a href="mailto:hvraman@iiits.in">hvraman@iiits.in</a>, <a href="tel:+917337324923">+91 7337324923</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-5" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-5"><div id="pgc-1787-5-0" class="panel-grid-cell"><div id="panel-1787-5-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="9"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-5-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr-Divyabramham-1.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-5-1" class="panel-grid-cell"><div id="panel-1787-5-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="10"><div class="facultyy panel-widget-style panel-widget-style-for-1787-5-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://sites.google.com/site/divyabramham/" rel="noopener" target="_blank">Dr. Kandimalla Divyabramham</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (IIT Kharagpur)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    High-frequency Asymptotic Techniques for Electromagnetic Scattering and Propagation Modeling, RCS Studies, Design of Passive Components for RF and Wireless Applications</p>
+                    <p><a href="mailto:divyabramham.k@iiits.in">divyabramham.k@iiits.in</a>, <a href="tel:+918897966988">+91 8897966988</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-6" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-6"><div id="pgc-1787-6-0" class="panel-grid-cell"><div id="panel-1787-6-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="11"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-6-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr-Krishna-Chaithanya.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-6-1" class="panel-grid-cell"><div id="panel-1787-6-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="12"><div class="facultyy panel-widget-style panel-widget-style-for-1787-6-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://scholar.google.co.in/citations?user=9ZFQhbYAAAAJ&amp;hl=en" rel="noopener" target="_blank">Dr. Krishna Chaitanya A</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (IISc Bangalore)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Resource allocation in wireless networks Information Theory.</p>
+                    <p><a href="mailto:krishnachaitanya.a@iiits.in">krishnachaitanya.a@iiits.in</a>, <a href="tel:+917337350343">+91 73373 50343</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-7" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-7"><div id="pgc-1787-7-0" class="panel-grid-cell"><div id="panel-1787-7-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="13"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-7-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/07/10678482_10152833437823466_5044885101042692415_n-2-259x300.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-7-1" class="panel-grid-cell"><div id="panel-1787-7-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="14"><div class="facultyy panel-widget-style panel-widget-style-for-1787-7-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="#" target="_blank">Dr Mainak Thakur</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (IIT Kharagpur)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Analyzing Spatial and Spatio-temporal Data, Geostatistical Applications in Mining, Non-stationarity and Non-Gaussianity Problems in Spatial Data, Different Multivariate Data Analysis Techniques</p>
+                    <p><a href="mailto:mainak.t@iiits.in">mainak.t@iiits.in</a>, <a href="tel:+918697947300">+91 86979 47300,</a><a href="tel:+919573588355"> 95735 88355</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-8" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-8"><div id="pgc-1787-8-0" class="panel-grid-cell"><div id="panel-1787-8-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="15"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-8-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/05/nagesh_photo.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-8-1" class="panel-grid-cell"><div id="panel-1787-8-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="16"><div class="facultyy panel-widget-style panel-widget-style-for-1787-8-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="http://mspaceapps.in/~nagesh/VillageGIS/index.html" rel="noopener" target="_blank">Dr. Nagesh Kolagani</a></h3>
+                    <p>Associate professor<br>
+                    PhD (IIT Madras)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Participatory GIS, Participatory Modelling</p>
+                    <p><a href="mailto:nagesh.k@iiits.in">nagesh.k@iiits.in</a>, <a href="tel:+919444620292">+91 94446 20292</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-9" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-9"><div id="pgc-1787-9-0" class="panel-grid-cell"><div id="panel-1787-9-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="17"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-9-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr.-Paul-Braineard.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-9-1" class="panel-grid-cell"><div id="panel-1787-9-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="18"><div class="facultyy panel-widget-style panel-widget-style-for-1787-9-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="#" rel="noopener" target="_blank">Dr. Paul Braineard</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (IIT Madras)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    MEMS , Microfluidics , Micropumps</p>
+                    <p><a href="mailto:ebpaul@iiits.in">ebpaul@iiits.in</a>, <a href="tel:+917337324914">+91 73373 24914</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-10" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-10"><div id="pgc-1787-10-0" class="panel-grid-cell"><div id="panel-1787-10-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="19"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-10-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr.-Raja-Vara-Prasad.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-10-1" class="panel-grid-cell"><div id="panel-1787-10-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="20"><div class="facultyy panel-widget-style panel-widget-style-for-1787-10-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://www.researchgate.net/profile/Raja_Yerra" rel="noopener" target="_blank">Dr. Raja Vara Prasad Y</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (IIT Hyderabad)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Wireless Sensor Networks Wireless Sensor and Actuator Networks , Smart Buildings, Net Zero Energy Buildings , Wireless Protocols for IoT applications, Smart Cities</p>
+                    <p><a href="mailto:yrv.prasad@iiits.in">yrv.prasad@iiits.in</a>, <a href="tel:+917337324920">+91 73373 24920</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-11" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-11"><div id="pgc-1787-11-0" class="panel-grid-cell"><div id="panel-1787-11-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="21"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-11-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr-Rajendra-Prasath.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-11-1" class="panel-grid-cell"><div id="panel-1787-11-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="22"><div class="facultyy panel-widget-style panel-widget-style-for-1787-11-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://www.2power3.com/rajendra/" rel="noopener" target="_blank">Dr. Rajendra Prasath</a></h3>
+                    <p>Associate professor<br>
+                    PhD [CSE] (IIT-Kharagpur) , Ph.D [Maths-CS] (University of Madras)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Information Retrieval , Machine Learning , Knowledge Based Systems Case-Based Reasoning , Self-Replication Systems , Distributed Algorithms</p>
+                    <p><a href="mailto:rajendra.prasath@iiits.in">rajendra.prasath@iiits.in</a>, <a href="tel:+919701700544">+91 97017 00544</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-12" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-12"><div id="pgc-1787-12-0" class="panel-grid-cell"><div id="panel-1787-12-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="23"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-12-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr-Rangeet.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-12-1" class="panel-grid-cell"><div id="panel-1787-12-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="24"><div class="facultyy panel-widget-style panel-widget-style-for-1787-12-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://accounts.google.com/signin/v2/sl/pwd?continue=https%3A%2F%2Fadmin.google.com%2FServiceNotAllowed%3Fcontinue%3Dhttps%3A%2F%2Fsites.google.com%2Fsite%2Fdrrangeetmitra%2F&amp;service=CPanel&amp;skipvpage=true&amp;passive=3600&amp;authuser=0&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin" rel="noopener" target="_blank">Dr. Rangeet Mitra</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (IIT Indore, India)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Visible light communications, massive MIMO, non-orthogonal multiple access, learning over reproducing kernel Hilbert space, blind equalization.</p>
+                    <p><a href="mailto:rangeet.mitra@iiits.in">rangeet.mitra@iiits.in</a>, <a href="tel:+918897941988">+91 88979 41988</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-13" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-13"><div id="pgc-1787-13-0" class="panel-grid-cell"><div id="panel-1787-13-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="25"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-13-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr-Shiv-Ram.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-13-1" class="panel-grid-cell"><div id="panel-1787-13-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="26"><div class="facultyy panel-widget-style panel-widget-style-for-1787-13-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://sites.google.com/site/shivram1987/Profile" rel="noopener" target="_blank">Dr. Shiv Ram Dubey</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (IIIT Allahabad)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Image Feature Description, Image Matching , Content Based Image Retrieval ,Computer Vision , Image Processing , Medical Imaging , Biometrics.</p>
+                    <p><a href="mailto:srdubey@iiits.in"> srdubey@iiits.in</a>, <a href="tel:+917337324915">+91 73373 24915</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-14" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-14"><div id="pgc-1787-14-0" class="panel-grid-cell"><div id="panel-1787-14-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="27"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-14-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr-Sivaprasad.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-14-1" class="panel-grid-cell"><div id="panel-1787-14-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="28"><div class="facultyy panel-widget-style panel-widget-style-for-1787-14-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://www.researchgate.net/scientific-contributions/84696221_Siva_Prasad_Kotamraju" rel="noopener" target="_blank">Dr. Sivaprasad Kotamraju</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (Mississippi State University, USA)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Compound semiconductors (III-V, IV-IV), thin films growth and characterization (electrical and optical), optoelectronics, power semiconductor devices and nanowires.</p>
+                    <p><a href="mailto:siva.k@iiits.in"> siva.k@iiits.in</a>, <a href="tel:+917337324910">+91 73373 24910</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-15" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-15"><div id="pgc-1787-15-0" class="panel-grid-cell"><div id="panel-1787-15-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="29"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-15-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr-Snehasis.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-15-1" class="panel-grid-cell"><div id="panel-1787-15-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="30"><div class="facultyy panel-widget-style panel-widget-style-for-1787-15-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://sites.google.com/a/iiits.in/snehasis-mukherjee/" rel="noopener" target="_blank">Dr. Snehasis Mukherjee</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (ISI Kolkatta)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Image/ Video Processing, Computer Vision, Pattern Recognition, Multimedia.</p>
+                    <p><a href="mailto:snehasis.mukherjee@iiits.in"> snehasis.mukherjee@iiits.in</a>, <a href="tel:+917337324911">+91 73373 24911</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-16" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-16"><div id="pgc-1787-16-0" class="panel-grid-cell"><div id="panel-1787-16-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="31"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-16-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/gv7.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-16-1" class="panel-grid-cell"><div id="panel-1787-16-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="32"><div class="facultyy panel-widget-style panel-widget-style-for-1787-16-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://umagarimella.wordpress.com/" rel="noopener" target="_blank">Dr. Uma Garimella</a></h3>
+                    <p>Professor<br>
+                    PhD (University of Hyderabad)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Educational Technologies , Multi Agent Systems , Virtual Agents.</p>
+                    <p><a href="mailto:uma.garimella@iiits.in"> uma.garimella@iiits.in</a>, <a href="tel:+917337324905">+91 73373 24905</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-17" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-17"><div id="pgc-1787-17-0" class="panel-grid-cell"><div id="panel-1787-17-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="33"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-17-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/06/Venkatesh-Vinayakarao.jpg" alt="" width="170" height="197" srcset="http://www.iiits.ac.in/iiits-content/uploads/2018/06/Venkatesh-Vinayakarao.jpg 288w, http://www.iiits.ac.in/iiits-content/uploads/2018/06/Venkatesh-Vinayakarao-259x300.jpg 259w" sizes="(max-width: 170px) 100vw, 170px"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-17-1" class="panel-grid-cell"><div id="panel-1787-17-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="34"><div class="facultyy panel-widget-style panel-widget-style-for-1787-17-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="http://vvtesh.co.in/" rel="noopener" target="_blank">Dr. Venkatesh Vinayakarao</a></h3>
+                    <p>Assistant Professor<br>
+                    PhD (IIIT Delhi)<br>
+                    <!--MS (Carnegie Mellon University, USA.) PhD (Pursuing. Thesis submitted at IIIT Delhi.)--></p>
+                    <p><strong>Research Areas:</strong><br>
+                    Building Search Engines for Source Code</p>
+                    <p><a href="mailto:venkatesh.v@iiits.in"> venkatesh.v@iiits.in</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-18" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-18"><div id="pgc-1787-18-0" class="panel-grid-cell"><div id="panel-1787-18-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="35"><div id="bakg" class="panel-widget-style panel-widget-style-for-1787-18-0-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <p><img class="wp-image-4889 aligncenter bakg" src="http://www.iiits.ac.in/iiits-content/uploads/2018/03/Dr-Viswanath.jpg" alt="" width="170" height="197"></p>
+                    </div>
+                    </div></div></div></div><div id="pgc-1787-18-1" class="panel-grid-cell"><div id="panel-1787-18-1-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="36"><div class="facultyy panel-widget-style panel-widget-style-for-1787-18-1-0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                    <div class="siteorigin-widget-tinymce textwidget">
+                        <p>&nbsp;</p>
+                    <h3><a href="https://sites.google.com/site/viswanathpulabaigari/" rel="noopener" target="_blank">Dr. Viswanath Pulabaigari</a></h3>
+                    <p>Associate Professor<br>
+                    PhD (IISc Bangalore)</p>
+                    <p><strong>Research Areas:</strong><br>
+                    Pattern Recognition , Data Mining , Algorithms.</p>
+                    <p><a href="mailto:viswanath.p@iiits.in"> viswanath.p@iiits.in</a>, <a href="tel:+917337324906">+91 73373 24906</a><br>
+                    &nbsp;</p>
+                    </div>
+                    </div></div></div></div></div></div><div id="pg-1787-19" class="panel-grid panel-has-style"><div id="innerfact" class="panel-row-style panel-row-style-for-1787-19"><div id="pgc-1787-19-0" class="panel-grid-cell"><div id="panel-1787-19-0-0" class="so-panel widget widget_text panel-first-child panel-last-child" data-index="37">			<div class="textwidget"></div>
+                            </div></div></div></div></div>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p class="lead text-center">
+            Copyright &copy;
+            <span id="year"></span>
+            ProjectA06
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+  </script>
+</body>
+
+</html>

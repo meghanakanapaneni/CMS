@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>ProjectA06</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+    <div class="container">
+      <a href="{% url 'homepage' %}" class="navbar-brand"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 32px; height: 32px; margin-right: 8px;">ProjectA06</a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item px-2">
+            <a href="{% url 'homepage' %}" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item dropdown mr-3">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i ></i> Academics
+              </a>
+              <div class="dropdown-menu">
+                <a href="{% url 'aca1' %}" class="dropdown-item">
+                  <i class="fas fa-dot"></i> Under Graduate Programs
+                </a>
+                <a href="{% url 'aca2' %}" class="dropdown-item">
+                   <i class="fas fa-dot"></i> Faculty
+                </a>
+               </div>
+            </li>
+          <li class="nav-item px-2">
+            <a href="{% url 'about' %}" class="nav-link">About</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="{% url 'contact' %}" class="nav-link">Contact Us</a>
+          </li>
+        
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown mr-3">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="fas fa-user"></i> Login
+              </a>
+              <div class="dropdown-menu">
+                <a href="https://serene-wildwood-35121.herokuapp.com/login/5bd892288e583700150e4dd5"" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> Student
+                </a>
+                <a href="{% url 'facultylogin' %}" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> Faculty
+                </a>
+                <a href="{% url 'adminlogin' %}" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> Admin
+                </a>
+              </div>
+            </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-warning text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>
+            <i class="fas fa-tag"></i> Contact Us</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+  <br>
+
+  <!-- USERS -->
+  <section id="users">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+              <div id="pg-1111-0" class="panel-grid panel-no-style">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6"><div id="pgc-1111-0-0" class="panel-grid-cell"><div id="panel-1111-0-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="0"><div class="so-widget-sow-editor so-widget-sow-editor-base">
+                        <div class="siteorigin-widget-tinymce textwidget">
+                          <p><strong>Project A06, IIIT Sri City, Chittoor</strong><br>
+                        <p><strong>Email and Phone.No :</strong><br>
+                        <strong>Abhishek.T</strong> <a href="mailto:abhishek.t16@iiits.in">abhishek.t16@iiits.in,</a><a href="tel:+919553522754">+91 9553522754</a><br>
+                        <strong>Deeksha.U</strong> <a href="mailto:deeksha.u16@iiits.in">deeksha.u16@iiits.in,</a><a href="tel:+919666484876">+91 9666484876</a><br>
+                        <strong>Meghana.K</strong> <a href="mailto:meghana.k16@iiits.in">meghana.k16@iiits.in,</a><a href="tel:+917013747335">+91 7013747335</a><br>
+                        <strong>Raja Ram.V</strong> <a href="mailto:rajaramachandrarao.v16@iiits.in">rajaramachandrarao.v16@iiits.in,</a><a href="tel:+919490946478">+91 9490946478</a><br>
+                        <strong>Sai Prasanna Kumar.K</strong> <a href="mailto:saiprasannakumar.k16@iiits.in">saiprasannakumar.k16@iiits.in,</a><a href="tel:+919963132113">+91 9963132113</a><br>
+                        <strong>Sai Teja.A</strong> <a href="mailto:saiteja.a16@iiits.in">saiteja.a16@iiits.in,</a><a href="tel:+919493946464">+91 9493946464</a><br>
+                        </p>
+                        <p>&nbsp;</p>
+                        </div>
+                        </div></div></div></div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p class="lead text-center">
+            Copyright &copy;
+            <span id="year"></span>
+            ProjectA06
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+  </script>
+</body>
+
+</html>
