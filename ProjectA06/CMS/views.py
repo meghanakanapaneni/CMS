@@ -93,7 +93,7 @@ def login1(request):
 def login2(request):
 	if request.method=='POST':
 		try:
-			x = faculty.objects.get(froll_no=request.POST['froll_no'])
+			x = faculty.objects.get(f_email=request.POST['f_email'])
 		except(KeyError, faculty.DoesNotExist):
 			template = loader.get_template('its/facultylogin.html')
 			context = {
@@ -179,8 +179,8 @@ def facultymakequery(request):
 def login3(request):
 	if request.method=='POST':
 		try:
-			x = adm.objects.get(aroll_no=request.POST['aroll_no'])
-		except(KeyError,adm.DoesNotExist):
+			x = college_admin.objects.get(email=request.POST['email'])
+		except(KeyError,college_admin.DoesNotExist):
 			template = loader.get_template('its/adminlogin.html')
 			context = {
 					'IDinvalid':"Invalid Username !",

@@ -8,6 +8,13 @@ class role(models.Model):
 	role_id = models.AutoField(primary_key=True,default='1')
 	role_name = models.CharField(max_length=50)
 
+class logged2(models.Model):
+	fid = models.IntegerField()
+class logged(models.Model):
+	sid = models.IntegerField()
+
+class logged3(models.Model):
+	aid = models.IntegerField()
 class student(models.Model):
 	s_id = models.AutoField(primary_key=True,default='1')
 	first_name = models.CharField(max_length=100)
@@ -15,12 +22,13 @@ class student(models.Model):
 	sroll_no = models.CharField(max_length=12)
 	dob = models.DateField()
 	gender = models.CharField(max_length=10)
-	mobile = models.IntegerField()
+	mobile = models.CharField(max_length=15)
 	email = models.EmailField(max_length=30)
 	sem_id = models.IntegerField()
 	cur_yos = models.IntegerField()
 	reg_year = models.IntegerField()
 	spswd = models.CharField(max_length = 20)
+	courses = models.CharField(max_length = 50)
 	role_id = models.ForeignKey(role,on_delete=models.CASCADE)
 	created_at = models.DateField(blank=True, null=True)
 	created_by = models.CharField(max_length=45, blank=True, null=True)
@@ -34,7 +42,7 @@ class student(models.Model):
 class faculty(models.Model):
 	f_id = models.AutoField(primary_key=True,default='1')
 	fac_name = models.CharField(max_length=100)
-	ph_no = models.CharField(max_length=100)
+	ph_no = models.CharField(max_length=15)
 	f_email = models.EmailField(max_length=30)
 	course_off = models.CharField(max_length=100)
 	fpswd = models.CharField(max_length = 30)
@@ -102,13 +110,10 @@ class Attendance(models.Model):
 
 class Leave(models.Model):
 	s_id = models.ForeignKey(student,on_delete=models.CASCADE)
-	name = models.CharField(max_length=100)
-	leave_roll_no = models.CharField(max_length=12)
 	reason = models.CharField(max_length=300)
 	leave_from = models.DateField()
 	leave_to = models.DateField()
 	no_ofdays = models.IntegerField()
-	email = models.EmailField(max_length=70,null=True,blank=True)
 	created_at = models.DateField(blank=True, null=True)
 	created_by = models.CharField(max_length=45, blank=True, null=True)
 	modified_at = models.DateField(blank=True, null=True)
