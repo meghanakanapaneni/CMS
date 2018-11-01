@@ -10,13 +10,13 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
-  <title>MakeQueryFaculty</title>
+  <title>Make query to faculty</title>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
     <div class="container">
-      <a href="adminhome'%}" class="navbar-brand"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 32px; height: 32px; margin-right: 8px;">CMS</a>
+      <a href="{% url 'homepage' %}" class="navbar-brand"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 32px; height: 32px; margin-right: 8px;">CMS</a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -87,24 +87,28 @@
               <h4>Query Description</h4>
             </div>
             <div class="card-body">
-              <form>
+               <form action="{% url 'facultymakequery' %}/" method="post" >
+		{% csrf_token %} 
                 <div class="form-group">
-              <label for="category">Course</label>
-              <select class="form-control">
-                <option value="">CSD</option>
-                <option value="">ITS</option>
-                <option value="">DigiComm</option>
-                <option value="">Staistics</option>
-              </select>
+                          
+                 <label for="category">Course</label>
+                  <select  name="course">
+        	   <ul>
+ 		   {% for link in current.links %}
+   		   <option value="{{link}}">  <li>{{ link }}</li></option>
+  		   {% endfor %} 
+		   </ul>
+		   </select>
             </div>
                 <div class="form-group">
-                  <label for="title">Regarding(Subject)</label>
-                  <input type="text" class="form-control" value="Class info">
+                  <label for="subject">Regarding(Subject)</label>
+                  <input type="text" name="subject" class="form-control" value="">
                 </div>
                 <div class="form-group">
-                  <label for="title">Query</label>
-                  <input type="text" class="form-control" value="Is there a class today..?">
+                  <label for="query">Query</label>
+                  <input type="text" name="query" class="form-control" value="">
                 </div>
+                  <input type="submit"  value="Post query"/>  
               </form>
             </div>
           </div>
@@ -113,27 +117,6 @@
     </div>
   </section>
 
- <section id="actions" class="py-4 mb-4 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <a href="{% url 'studenthome'%}" class="btn btn-info btn-block">
-            <i class="fas fa-home"></i> Home
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="{% url 'studenthome'%}" class="btn btn-success btn-block">
-            <i class="fas fa-check"></i> Post Query
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="{% url 'studenthome'%}" class="btn btn-danger btn-block">
-            <i class="fas fa-trash"></i> Delete Query
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
 
 
   <!-- FOOTER -->

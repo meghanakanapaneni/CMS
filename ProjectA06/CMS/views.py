@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 import requests,json
 from passlib.hash import pbkdf2_sha256
-
+from datetime import date
 
 # Create your views here.
 def dashboard(request):
@@ -45,15 +45,15 @@ def studentlogin(request):
 def trackattendance(request):
 	x=logged.objects.all()[0].sid
 	s=student.objects.get(s_id=x)
-	y = get_list_or_404(Attendance,s_id=s)
+	#y = get_list_or_404(Attendance,s_id=s)
 	#print("dfssgsfg")
-	print(y)
+	#print(y)
 	template = loader.get_template('its/trackattendance.html')
 	context = {
-    	'y':y,
-    }
+		'y':s,
+	}
 	return HttpResponse(template.render(context,request))
-    
+	
 def trackacademicprogress(request):
     return render(request,'its/trackacademicprogress.html')
 def teaching(request):
@@ -84,9 +84,10 @@ def login1(request):
 			u.sid = x.s_id
 			u.save()
 			u = logged.objects.all()[0].sid
+			s=student.objects.get(s_id=u)
 			template = loader.get_template('its/studenthome.html')
 			context = {
-					'current' : u 
+					'current' : s 
 				}
 			return HttpResponse(template.render(context,request))
 
@@ -127,27 +128,35 @@ def details(request):
     return render(request,'its/details.html')
 
 def studentleave(request):
-	
-	
 	x=logged.objects.all()[0].sid
 	s=student.objects.get(s_id=x)
 	
 	if request.method=='POST':
-		name = request.POST.get('name', False)
-		leave_roll_no = request.POST.get('leave_roll_no', False)
+		s_id = x
 		reason = request.POST.get('reason', False)
 		leave_from = request.POST.get('leave_from', False)
 		leave_to = request.POST.get('leave_to', False)
-		no_ofdays = request.POST.get('no_ofdays', False)
-		email = request.POST.get('email',False)
-		p = Leave.objects.create(s_id=s,name=name,leave_roll_no=leave_roll_no,reason=reason,leave_from=leave_from,leave_to=leave_to,no_ofdays=no_ofdays,email=email)
+		l1=leave_from.split('-')
+		l2=leave_to.split('-')
+		d1=date(int(l1[0]),int(l1[1]),int(l1[2]))
+		d2=date(int(l2[0]),int(l2[1]),int(l2[2]))
+		delta=d2-d1
+		no_ofdays = delta.days+1
+		p = Leave.objects.create(s_id=s,reason=reason,leave_from=leave_from,leave_to=leave_to,no_ofdays=no_ofdays)
 		p.save()	
 	return render(request,'its/studentleave.html')
-
 def leavesubmit(request):
 	return render(request,'its/leavesubmit.html')
+
 def studentprofile(request):
-	return render(request,'its/studentprofile.html')
+	x=logged.objects.all()[0].sid
+	s=student.objects.get(s_id=x)
+	template = loader.get_template('its/studentprofile.html')
+	context = {
+		'current' : s 
+	}
+	return HttpResponse(template.render(context,request))
+
 def facultyhome(request):
     return render(request,'its/facultyhome.html')
 
@@ -170,10 +179,45 @@ def talking(request):
     return render(request,'its/talking.html')
 
 def adminmakequery(request):
-    return render(request,'its/adminmakequery.html')
+	u = logged.objects.all()[0].sid
+	w = student.objects.get(s_id=u)
+	v = college_admin.objects.all()	
+	template = loader.get_template('its/adminmakequery.html')
+	context = {
+			'current' : v
+		}
+	if request.method=='POST':
+		admin_name = request.POST.get('admin_name',False)
+		admin_row = college_admin.objects.get(ad_name = admin_name)
+		#print(admin_row)
+		subject = request.POST.get('subject', False)
+		query = request.POST.get('query', False)
+		p1 = admin_row.querytoadmin_set.create(subject=subject,query=query,s_id_id = u, a_id=admin_row.a_id)
+		p1.save()
+	return HttpResponse(template.render(context,request))
 
 def facultymakequery(request):
-    return render(request,'its/facultymakequery.html')
+	u = logged.objects.all()[0].sid
+	v=student.objects.get(s_id=u)	
+	cs=v.courses
+	stu_courses=cs.split(',')
+	print(v.courses)
+	print(stu_courses)
+	template = loader.get_template('its/facultymakequery.html')
+	context = {
+			'current' : {'v':v,'links':stu_courses}
+		}
+	
+	if request.method=='POST':
+		course1 = request.POST.get('course',False)
+		print(course)
+		course_row = course.objects.get(course_name = course1)
+		subject = request.POST.get('subject', False)
+		query = request.POST.get('query', False)
+		p = v.query_set.create(subject=subject,query=query,f_id=course_row.f_id)
+		p.save()
+	return HttpResponse(template.render(context,request))
+
 
 
 def login3(request):
@@ -256,7 +300,7 @@ def addstudent(request):
 		p = student.objects.create(s_id=s+1,first_name=first_name,last_name=last_name,sroll_no=sroll_no,dob=dob,gender=gender,mobile=mobile,spswd=spswd,email=email,role_id_id=role_id_id,sem_id=sem_id,cur_yos=cur_yos,reg_year=reg_year)
 		p.save()		
 		return HttpResponse("Successfully saved")
-	return render(request,'its/addstudent.html')
+	return render(request,'/CMS/addstudent.html')
 	
 def adminanswerqueries(request):
 	
@@ -303,11 +347,11 @@ def adminstudents(request):
     return render(request,'its/adminstudents.html')
 def callback(request,token):
 	info = authenticate(token)
-	template = loader.get_template('its/studenthome.html')
-	context = {
-		'data' : info['student'],
-	}
-	return HttpResponse(template.render(context,request))
+	#template = loader.get_template('its/studenthome.html')
+	# context = {
+	# 	'data' : info['student'],
+	# }
+	return HttpResponse(info)
 
 def authenticate(token):
 	url = "https://serene-wildwood-35121.herokuapp.com/oauth/5bd892288e583700150e4dd5"
@@ -316,3 +360,9 @@ def authenticate(token):
 	details = json.loads(k.content)
 	print(details)
 	return details
+
+def teachingcourse1(request):
+	return render(request,'its/Teaching/IR.html')
+
+def teachingcourse2(request):
+	return render(request,'its/Teaching/IR.html')	
