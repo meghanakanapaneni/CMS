@@ -164,13 +164,14 @@ class Events(models.Model):
 	modified_at = models.DateField(blank=True, null=True)
 	modified_by = models.CharField(max_length=45, blank=True, null=True)
 
-def get_upload_path(instance,filename):
-	return 'documents/{0}/{1}'.format(instance.user,filename)
+# def get_upload_path(instance,filename):
+# 	return 'documents/{0}/{1}'.format(instance.user,filename)
 class UploadSlides(models.Model):
+	c_id = models.ForeignKey(course,on_delete=models.CASCADE)
 	f_id = models.ForeignKey(faculty,on_delete=models.CASCADE)
-	Topic = models.CharField(max_length= 20)
+	topic = models.CharField(max_length= 20)
 	readings = models.CharField(max_length = 50)
-	docfile= models.FileField(upload_to=get_upload_path)
-#class Notifications(models.Model):
-#	student
+	docfile= models.URLField(max_length = 100)
+	def __str__(self):
+		return str(self.topic)
 

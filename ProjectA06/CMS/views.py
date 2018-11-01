@@ -12,6 +12,9 @@ from django.contrib.auth import login, logout, authenticate
 import requests,json
 from passlib.hash import pbkdf2_sha256
 from datetime import date
+from django.shortcuts import render
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def dashboard(request):
@@ -56,8 +59,8 @@ def trackattendance(request):
 	
 def trackacademicprogress(request):
     return render(request,'its/trackacademicprogress.html')
-def teaching(request):
-    return render(request,'its/teaching.html')
+
+    
 def talks(request):
     return render(request,'its/talks.html')
 
@@ -147,7 +150,14 @@ def studentleave(request):
 	return render(request,'its/studentleave.html')
 def leavesubmit(request):
 	return render(request,'its/leavesubmit.html')
-
+def facultyprofile(request):
+	x=logged2.objects.all()[0].fid
+	f=faculty.objects.get(f_id=x)
+	template = loader.get_template('its/facultyprofile.html')
+	context = {
+		'current' : f 
+	}
+	return HttpResponse(template.render(context,request))
 def studentprofile(request):
 	x=logged.objects.all()[0].sid
 	s=student.objects.get(s_id=x)
@@ -158,13 +168,25 @@ def studentprofile(request):
 	return HttpResponse(template.render(context,request))
 
 def facultyhome(request):
-    return render(request,'its/facultyhome.html')
+	x=logged2.objects.all()[0].fid
+	f=faculty.objects.get(f_id=x)
+	template = loader.get_template('its/facultyhome.html')
+	context = {
+		'current' : f 
+	}
+	return HttpResponse(template.render(context,request))
 
 def facultylogin(request):
     return render(request,'its/facultylogin.html')
 
 def postanswers(request):
-    return render(request,'its/postanswers.html')
+	x=logged2.objects.all()[0].fid
+	f=faculty.objects.get(f_id=x)
+	template = loader.get_template('its/facultyhome.html')
+	context = {
+		'current' : f 
+	}
+	return HttpResponse(template.render(context,request))
 
 def queries(request):
     return render(request,'its/queries.html')
@@ -339,9 +361,6 @@ def adminqueries(request):
 
    # return render(request,'its/adminqueries.html')
 
-def teachingcourse(request):
-	return render(request,'its/Teaching/IR.html')
-
 
 def adminstudents(request):
     return render(request,'its/adminstudents.html')
@@ -361,8 +380,66 @@ def authenticate(token):
 	print(details)
 	return details
 
+def teaching(request):
+	x = logged2.objects.all()[0].fid
+	f = faculty.objects.get(f_id = x)
+	c = f.course_off
+	courses_list = c.split(',')
+	print(courses_list)
+	context = {
+		'courses_list':courses_list,
+		'current':f
+	}
+	return render(request,'its/teaching.html',context)
+	
 def teachingcourse1(request):
-	return render(request,'its/Teaching/IR.html')
+	if request.method == 'POST' and request.FILES['myfile']:
+		x=logged2.objects.all()[0].fid
+		s=faculty.objects.get(f_id=x)
+		f_id = s
+		myfile = request.FILES['myfile']
+		topic  = request.POST.get('topic')
+		readings = request.POST.get('readings')
+		# course_name = request.POST.get('course')
+		c_obj = course.objects.get(course_name = 'IR')
+		fs = FileSystemStorage()
+		filename = fs.save('slides/'+ myfile.name, myfile)
+		uploaded_file_url = fs.url(filename)
+		UploadSlides.objects.create(c_id = c_obj, f_id = f_id, topic = topic ,readings = readings,docfile = uploaded_file_url)
+		obj = UploadSlides.objects.all()
+		obj = list(obj.filter(c_id = c_obj))
+		print(obj)
+		return render(request, "its/teaching.html")
+	else:
+		c_obj = course.objects.get(course_name = 'IR')
+		obj = UploadSlides.objects.all()
+		obj = list(obj.filter(c_id = c_obj))
+		return render(request,'its/Teaching/IR.html', {
+			'obj': obj
+		})
 
 def teachingcourse2(request):
-	return render(request,'its/Teaching/IR.html')	
+	if request.method == 'POST' and request.FILES['myfile']:
+		x=logged2.objects.all()[0].fid
+		s=faculty.objects.get(f_id=x)
+		f_id = s
+		myfile = request.FILES['myfile']
+		topic  = request.POST.get('topic')
+		readings = request.POST.get('readings')
+		# course_name = request.POST.get('course')
+		c_obj = course.objects.get(course_name = 'PC')
+		fs = FileSystemStorage()
+		filename = fs.save('slides/'+ myfile.name, myfile)
+		uploaded_file_url = fs.url(filename)
+		UploadSlides.objects.create(c_id = c_obj, f_id = f_id, topic = topic ,readings = readings,docfile = uploaded_file_url)
+		obj = UploadSlides.objects.all()
+		obj = list(obj.filter(c_id = c_obj))
+		print(obj)
+		return render(request, "its/teaching.html")
+	else:
+		c_obj = course.objects.get(course_name = 'PC')
+		obj = UploadSlides.objects.all()
+		obj = list(obj.filter(c_id = c_obj))
+		return render(request,'its/Teaching/PC.html', {
+			'obj': obj
+		})

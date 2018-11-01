@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^teaching',views.teaching,name ="teaching"),
     url(r'^adminmakequery',views.adminmakequery,name ="adminmakequery"),
     url(r'^facultymakequery',views.facultymakequery,name ="facultymakequery"),
+    url(r'^facultyprofile',views.facultyprofile,name  = "facultyprofile"),
     url(r'^login3$',views.login3,name="login3"),
     url(r'^adminhome',views.adminhome,name ="adminhome"),
     url(r'^addevents',views.addevents,name ="addevents"),

@@ -36,13 +36,13 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown mr-3">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-user"></i> Welcome Brad
+              <i class="fas fa-user"></i> {{current.fac_name}}
             </a>
-            <!-- <div class="dropdown-menu">
-              <a href="'profile'" class="dropdown-item">
+            <div class="dropdown-menu">
+              <a href="{% url 'facultyprofile' %}" class="dropdown-item">
                 <i class="fas fa-user-circle"></i> Profile
               </a>
-            </div> -->
+            </div>
           </li>
           <li class="nav-item">
             <a href="{% url 'homepage' %}" class="nav-link">
@@ -61,7 +61,8 @@
         <div class="col">
           <h1>
             <i class="fas fa-pencil-alt"></i> Teaching</h1>
-        </div>
+          </h1>
+          </div>
       </div>
     </div>
   </header>
@@ -89,15 +90,22 @@
                 <div class="card-header">
                     <h4>Courses Offered</h4>
                 </div><br/>
-                  
-                      <ul class="list-group"> 
+                    <!-- {% for course in courses_list %}
+                    <ul class="list-group"> 
+                        <li class="list-group-item">
+                            {{ course }}  
+                        </li>
+                    </ul>
+                    {% endfor %} -->
+                    <ul class="list-group"> 
                         <li class="list-group-item">
                             <a  href="{% url 'IR' %}">Information Retrieval</a>
                         </li>
                         <li class="list-group-item">
                             <a  href="{% url 'PC' %}">Programming in C</a>
                         </li>
-                    </div>
+                    </ul>
+                      </div>
               </div>
                     <br/>
             </div>           
