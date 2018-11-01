@@ -36,13 +36,13 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown mr-3">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-user"></i> Welcome Brad
+              <i class="fas fa-user"></i> {{ current.fac_name }}
             </a>
-            <!-- <div class="dropdown-menu">
-              <a href="'rofile'" class="dropdown-item">
+            <div class="dropdown-menu">
+              <a href="{% url 'facultyprofile'%}" class="dropdown-item">
                 <i class="fas fa-user-circle"></i> Profile
               </a>
-            </div> -->
+            </div>
           </li>
           <li class="nav-item">
             <a href="{% url 'homepage'%}" class="nav-link">
