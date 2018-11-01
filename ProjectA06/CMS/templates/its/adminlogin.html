@@ -55,7 +55,7 @@
               {% csrf_token %}
                 <div class="form-group">
                   <label for="aroll_no">Username</label>
-                  <input type="text" name="aroll_no" class="form-control" value="">
+                  <input type="text" name="email" class="form-control" value="">
                 </div>
                 <div class="form-group">
                   <label for="apswd">Password</label>
@@ -69,7 +69,7 @@
       </div>
     </div>
   </section>
-<form action="users.html">
+<form action="{% url 'homepage' %}">
     <input type="submit" value="Back" class="btn btn-primary btn-block"/>
 </form>
   <!-- FOOTER -->
