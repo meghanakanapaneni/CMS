@@ -45,7 +45,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown mr-3">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-user"></i>{{ data.Student_First_Name }} 
+              <i class="fas fa-user"></i>{{ current.first_name }} 
             </a>
             <div class="dropdown-menu">
               <a href="{% url 'studentprofile' %}" class="dropdown-item">
@@ -137,8 +137,8 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>Assignment</td>
+                  <td>{{current.s_id}}</td>
+                  <td>{{current.s_id}}</td>
                   <td>CSD</td>
                   <td>May 10 2018</td>
                   <td>

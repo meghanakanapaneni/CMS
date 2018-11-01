@@ -11,13 +11,14 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
-  <title>Student</title>
+  <title>Apply leave</title>
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
     <div class="container">
-      <a href="studenthome' %}" class="navbar-brand"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 32px; height: 32px; margin-right: 8px;">CMS</a>
+      <a href="{% url 'studenthome' %}" class="navbar-brand"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 32px; height: 32px; margin-right: 8px;">CMS</a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -100,37 +101,23 @@
               <h4>Apply Leave</h4>
             </div>
             <div class="card-body">
-              <form action="/its/studentleave' %}/" method="post" >
+              <form action="{% url 'studentleave' %}/" method="post" >
 		{% csrf_token %}
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" class="form-control" value="">
-                </div>
-                <div class="form-group">
-                    <label for="leave_roll_no">Roll No</label>
-                    <input type="text" name="leave_roll_no" class="form-control" value="">
-                  </div>
+            
                   <div class="form-group">
                     <label for="reason">Reason for Leave</label>
                     <input type="text" name="reason" class="form-control" value="">
                   </div>
                   <div class="form-group">
-                    <label for="leave_from">Leave From</label>
+                    <label for="leave_from">Leave From  &emsp (Format:Year-month-date)</label>
                     <input type="text" name="leave_from" class="form-control" value="">
                   </div>
                   <div class="form-group">
-                    <label for="leave_to">Leave To</label>
+                    <label for="leave_to">Leave To                                            (Format:Year-month-date)</label>
                     <input type="text" name="leave_to" class="form-control" value="">
                   </div>
-                  <div class="form-group">
-                    <label for="no_ofdays">No of days</label>
-                    <input type="text" name="no_ofdays" class="form-control" value="">
-                  </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" value="">
-                </div>
-                <input type="submit" value="Apply leave"/>  
+             
+                <input type="submit"  value="Apply leave"/>  
             </form>
             </div>
           </div>
@@ -141,6 +128,7 @@
     </div>
   </section>
 <br><br>
+<!--
 <div class="row">
 
         <div class="col-md-4">
@@ -151,7 +139,7 @@
     </a>
 </div>
 </div>
-
+-->
   
   <!-- FOOTER -->
   <footer id="main-footer" class="bg-dark text-white mt-5 p-5">

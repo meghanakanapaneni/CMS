@@ -21,7 +21,8 @@ class student(models.Model):
 	last_name = models.CharField(max_length=100)
 	sroll_no = models.CharField(max_length=12)
 	dob = models.DateField()
-	gender = models.CharField(max_length=10)
+	GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'))
+	gender = models.CharField(choices = GENDER_CHOICES,max_length=10)
 	mobile = models.CharField(max_length=15)
 	email = models.EmailField(max_length=30)
 	sem_id = models.IntegerField()
@@ -120,7 +121,20 @@ class Leave(models.Model):
 	modified_by = models.CharField(max_length=45, blank=True, null=True)
 
 class Query(models.Model):
-	query = models.CharField(max_length=100)
+	subject = models.CharField(max_length = 100)
+	query = models.CharField(max_length=300)
+	s_id = models.ForeignKey(student,on_delete=models.CASCADE)
+	f_id = models.ForeignKey(faculty,on_delete=models.CASCADE)
+	created_at = models.DateField(blank=True, null=True)
+	created_by = models.CharField(max_length=45, blank=True, null=True)
+	modified_at = models.DateField(blank=True, null=True)
+	modified_by = models.CharField(max_length=45, blank=True, null=True)
+	def __str__(self):
+		return self.query
+
+class Querytoadmin(models.Model):
+	subject = models.CharField(max_length= 100)
+	query = models.CharField(max_length=300)
 	s_id = models.ForeignKey(student,on_delete=models.CASCADE)
 	a_id = models.ForeignKey(college_admin,on_delete=models.CASCADE,null=True)
 	created_at = models.DateField(blank=True, null=True)
@@ -131,6 +145,7 @@ class Query(models.Model):
 		return self.query
 
 class Answerqueryadmin(models.Model):
+	subject = models.CharField(max_length= 100)
 	query = models.CharField(max_length=100)
 	s_id = models.ForeignKey(student,on_delete=models.CASCADE)
 	a_id = models.ForeignKey(college_admin,on_delete=models.CASCADE,null=True)
@@ -149,6 +164,13 @@ class Events(models.Model):
 	modified_at = models.DateField(blank=True, null=True)
 	modified_by = models.CharField(max_length=45, blank=True, null=True)
 
+def get_upload_path(instance,filename):
+	return 'documents/{0}/{1}'.format(instance.user,filename)
+class UploadSlides(models.Model):
+	f_id = models.ForeignKey(faculty,on_delete=models.CASCADE)
+	Topic = models.CharField(max_length= 20)
+	readings = models.CharField(max_length = 50)
+	docfile= models.FileField(upload_to=get_upload_path)
 #class Notifications(models.Model):
 #	student
 
