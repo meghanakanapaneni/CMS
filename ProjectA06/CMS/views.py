@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 import requests,json
+from passlib.hash import pbkdf2_sha256
 
 
 # Create your views here.
@@ -59,6 +60,36 @@ def teaching(request):
     return render(request,'its/teaching.html')
 def talks(request):
     return render(request,'its/talks.html')
+
+def login1(request):
+	if request.method=='POST':
+		try:
+			x = student.objects.get(email=request.POST['email'])
+		except(KeyError, student.DoesNotExist):
+			template = loader.get_template('its/studentlogin.html')
+			context = {
+					'IDinvalid':"Invalid Username !",
+				}
+			return HttpResponse(template.render(context,request))
+		if request.POST['password'] != x.spswd:
+			template = loader.get_template('its/studentlogin.html')
+			context = {
+					'Passwordinvalid':"Incorrect password!",
+				}
+			return HttpResponse(template.render(context,request))
+
+		else:
+			logged.objects.all().delete()
+			u = logged()
+			u.sid = x.s_id
+			u.save()
+			u = logged.objects.all()[0].sid
+			template = loader.get_template('its/studenthome.html')
+			context = {
+					'current' : u 
+				}
+			return HttpResponse(template.render(context,request))
+
 def login2(request):
 	if request.method=='POST':
 		try:
