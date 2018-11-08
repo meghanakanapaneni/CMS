@@ -39,7 +39,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown mr-3">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-user"></i> Welcome Brad
+              <i class="fas fa-user"></i>{{current.v.ad_name}}
             </a>
             <div class="dropdown-menu">
               <a href="{% url 'adminprofile'%}" class="dropdown-item">
@@ -70,21 +70,7 @@
   </header>
 
   <!-- SEARCH -->
-  <section id="search" class="py-4 mb-4 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 ml-auto">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search Students...">
-            <div class="input-group-append">
-              <button class="btn btn-warning">Search</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  
   <!-- USERS -->
   <section id="users">
     <div class="container">
@@ -97,44 +83,35 @@
             <table class="table table-striped">
               <thead class="thead-dark">
                 <tr>
-                  <th>#</th>
+                  <th>S.No</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Prasanna </td>
-                  <td>Prasanna.k16@iiits.in</td>
+              
+              
+             {% for students in current.all_students %}
+               <tr>
+                 
+                  <td>{{ students.s_id }}</td>
+                  <td>{{ students.first_name }} {{ students.last_name }}</td>
+                  <td>{{ students.email }}</td>
                   <td>
-                    <a href="details.html" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Details
+                    <a href="{% url 'adminanswerqueries' %}" class="btn btn-secondary">
+                      <i class="fas fa-angle-double-right"></i> Answer
                     </a>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Deeksha</td>
-                  <td>deeksha.u16@iiits.in</td>
-                  <td>
-                    <a href="details.html" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Details
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>RajaRam</td>
-                  <td>rajaramachandrarao.v16@iiits.in</td>
-                  <td>
-                    <a href="details.html" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Details
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
+              
+           {% endfor %}
+              
+               
+                
+                
+                
+              </tbody>           
             </table>
             <nav class="ml-4">
               <ul class="pagination">
