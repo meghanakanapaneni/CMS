@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from .models import *
 from django.shortcuts import render,get_list_or_404
 from django.template import loader
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt,csrf_protect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 import requests,json
@@ -46,6 +46,7 @@ def adminlogin(request):
 
 def studentlogin(request):
     return render(request,'its/studentlogin.html')
+@ csrf_protect 
 def login1(request):
 	if request.method=='POST':
 		print(request.user)
@@ -78,7 +79,7 @@ def login1(request):
 					'current' : s 
 				}
 			return HttpResponse(template.render(context,request))
-
+@csrf_protect 
 def login2(request):
 	if request.method=='POST':
 		try:
@@ -89,7 +90,7 @@ def login2(request):
 					'IDinvalid':"Invalid Username !",
 				}
 			return HttpResponse(template.render(context,request))
-		if request.POST['password'] != x.fpswd:
+		if check_password(request.POST['password'] ,x.fpswd) ==False:
 			template = loader.get_template('its/facultylogin.html')
 			context = {
 					'Passwordinvalid':"Incorrect password!",
@@ -107,7 +108,7 @@ def login2(request):
 					'current' : u2 
 				}
 			return HttpResponse(template.render(context,request))
-
+@csrf_protect 
 def login3(request):
 	if request.method=='POST':
 		try:
@@ -118,7 +119,7 @@ def login3(request):
 					'IDinvalid':"Invalid Username !",
 				}
 			return HttpResponse(template.render(context,request))
-		if request.POST['apswd'] != x.apswd:
+		if check_password(request.POST['apswd'],x.apswd) ==False:
 			template = loader.get_template('its/adminlogin.html')
 			context = {
 					'Passwordinvalid':"Incorrect password!",
