@@ -10,7 +10,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 import requests,json
-from passlib.hash import pbkdf2_sha256
 from datetime import date
 from django.shortcuts import render
 from django.conf import settings
@@ -44,12 +43,9 @@ def facultylogin(request):
 def adminlogin(request):
     return render(request,'its/adminlogin.html')
 
-@login_required(login_url ='/homepage/')
 def studenthome(request):
 	x=logged.objects.all()[0].sid
 	s=student.objects.get(s_id=x)
-	courses = s.course.split(',')
-	print(courses)
 	template = loader.get_template('its/studenthome.html')
 	context = {
 		'current':s,
@@ -149,7 +145,10 @@ def login3(request):
 				}
 			return HttpResponse(template.render(context,request))
 
+# def logout(request):
+# 	if logged.objects.count() != 0:
 
+# 	return 
 
 def studentprofile(request):
 	x=logged.objects.all()[0].sid
@@ -250,11 +249,11 @@ def facultymakequery(request):
 		faculty_row=faculty.objects.get(f_id=course_row.f_id.f_id)
 		subject = request.POST.get('subject', False)
 		query = request.POST.get('query', False)
-		created_by = w.first_name
+		created_by = v.first_name
 		created_at = datetime.datetime.now().date()
-		modified_by = w.first_name
+		modified_by = v.first_name
 		modified_at = datetime.datetime.now().date()
-		p = faculty_row.query_set.create(subject=subject,query=query,s_id=u,student_name=student_name,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
+		p = faculty_row.query_set.create(subject=subject,query=query,s_id=v,student_name=student_name,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
 		p.save()
 	return HttpResponse(template.render(context,request))
 
@@ -271,6 +270,7 @@ def facultyprofile(request):
 def facultyhome(request):
 	x=logged2.objects.all()[0].fid
 	f=faculty.objects.get(f_id=x)
+
 	template = loader.get_template('its/facultyhome.html')
 	context = {
 		'current' : f 
@@ -526,12 +526,10 @@ def adminstudents(request):
 	return HttpResponse(template.render(context,request))
 def authenticate(token):
 	url = "https://serene-wildwood-35121.herokuapp.com/oauth/getDetails"
-	k1 = requests.get(url)
-	print(k1.status_code)
 	Payload = {'token' : token,'secret' : "32b29bfed559049a7cb82c01088b3c07759d820dfb99e43a2ecf9ef31baf31e5645679e9f99966f7911117e149fce474d2591b87da6f9f0464780853b6aea652"} 
 	k = requests.post(url,Payload)
 	
-	details = json.loads(k.content)
+	details = json.loads(k.content.decode('utf-8'))
 	print(details)	
 	return details
 
@@ -556,50 +554,23 @@ def callback(request,token):
 	student_cur_sem = student_data[0]['Student_Cur_Sem']
 	student_academic_status = student_data[0]['Student_Academic_Status']
 	rand_password = "student@123"
-	stu_obj = student.objects.get(first_name = student_first_name)
-	context = {'current':stu_obj}
-	if stu_obj.first_name == student_first_name:
-		return  HttpResponse(template.render(context,request))
-
 	# try:
-	# 	# stu_obj = student.objects.get(email = student_email)
-	# 	stu_obj = student.objects.get(first_name = student_first_name) 
+	stu_obj = student.objects.get(email = student_email)
 	# except student.DoesNotExist:
 	# 	stu_obj = None
-	
-	# if stu_obj is not None:
+	# if stu_obj is None:
+	# 	student.objects.create(s_id=s_id,first_name=student_first_name,last_name=student_last_name,sroll_no=sroll_no,dob=student_dob,
+	# 		gender=student_gender,mobile=student_mobile,spswd=rand_password,
+	# 		email=student_email,role_id_id=1,sem_id=student_cur_sem,cur_yos=student_cur_yearofstudy,reg_year=student_registered_year,
+	# 		created_at= datetime.datetime.now().replace(tzinfo=pytz.UTC).date(),created_by = student_first_name,modified_at= datetime.datetime.now().replace(tzinfo=pytz.UTC).date(),modified_by= student_first_name)
+	# 	student = student.objects.get(s_id = s_id)
+
 	# 	return render(request, 'its/studenthome.html', {
-	# 		'current': stu_obj
+	# 		'current': student
 	# 	})
-	# else:
-
-
-	# try:
-	# 	st_obj = student.objects.get(first_name = student_first_name)
-	# except student.DoesNotExist:
-	# 	st_obj = None
-	# if st_obj is None:
-	# 	try:
-	# 		user = student.objects.get(first_name = student_first_name)
-	# 	except student.DoesNotExist:
-	# 		user = None
-	# 	if user is None:
-	# 		user = student.objects.create(username = student_first_name, password = rand_password)
-	# 		user.set_password(rand_password)
-	# 		user.save()
-			# student.objects.create(s_id=s_id,first_name=student_first_name,last_name=student_last_name,sroll_no=sroll_no,dob=student_dob,
-			# gender=student_gender,mobile=student_mobile,spswd=rand_password,
-			# email=student_email,role_id_id=1,sem_id=student_cur_sem,cur_yos=student_cur_yearofstudy,reg_year=student_registered_year,
-			# created_at= datetime.datetime.now().replace(tzinfo=pytz.UTC).date(),created_by = student_first_name,modified_at= datetime.datetime.now().replace(tzinfo=pytz.UTC).date(),modified_by= student_first_name)	
-			# student = student.objects.get(user = request.user)
-			# return render(request, 'its/studenthome.html', {
-			# 	'current': student
-			# })
-	# 	print(student)
-	# else:
-	# 	user = login1(request, username = student_first_name, password = rand_password)
-	# 	if user is not None:
-	# 		login1(request, user)
-	# 		return redirect('/')
-
-
+	logged.objects.create(sid = s_id)
+	context = {'current':stu_obj}
+	if stu_obj.email == student_email:
+		print(student)
+		return  HttpResponse(template.render(context,request))
+	

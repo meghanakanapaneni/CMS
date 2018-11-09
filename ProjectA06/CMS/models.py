@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class role(models.Model):
-	role_id = models.AutoField(primary_key=True,default='1')
+	role_id = models.IntegerField(primary_key=True,default='1')
 	role_name = models.CharField(max_length=50)
 
 class logged2(models.Model):
@@ -15,9 +15,11 @@ class logged(models.Model):
 
 class logged3(models.Model):
 	aid = models.IntegerField()
+
 class student(models.Model):
-	s_id = models.AutoField(primary_key=True,default='1')
+	s_id = models.IntegerField(primary_key=True,default='1')
 	first_name = models.CharField(max_length=100)
+	middle_name = models.CharField(max_length = 100)
 	last_name = models.CharField(max_length=100)
 	sroll_no = models.CharField(max_length=12)
 	dob = models.DateField()
@@ -28,7 +30,6 @@ class student(models.Model):
 	cur_yos = models.IntegerField()
 	reg_year = models.IntegerField()
 	spswd = models.CharField(max_length = 100)
-	courses = models.CharField(max_length = 50)
 	role_id = models.ForeignKey(role,on_delete=models.CASCADE)
 	created_at = models.DateField(blank=True, null=True)
 	created_by = models.CharField(max_length=45, blank=True, null=True)
@@ -40,7 +41,7 @@ class student(models.Model):
 
 	
 class faculty(models.Model):
-	f_id = models.AutoField(primary_key=True,default='1')
+	f_id = models.IntegerField(primary_key=True,default='1')
 	fac_name = models.CharField(max_length=100)
 	ph_no = models.CharField(max_length=15)
 	f_email = models.EmailField(max_length=30)
@@ -54,7 +55,7 @@ class faculty(models.Model):
 
 
 class college_admin(models.Model):
-	a_id = models.AutoField(primary_key=True,default='1')
+	a_id = models.IntegerField(primary_key=True,default='1')
 	ad_name = models.CharField(max_length=100)
 	role_id = models.ForeignKey(role,on_delete=models.CASCADE)
 	email = models.EmailField(max_length=30)
@@ -65,7 +66,7 @@ class college_admin(models.Model):
 	modified_by = models.CharField(max_length=45, blank=True, null=True)
 
 class course(models.Model):
-	c_id = models.AutoField(primary_key=True,default='1')
+	c_id = models.IntegerField(primary_key=True,default='1')
 	sem_id = models.IntegerField()
 	course_name = models.CharField(max_length=100)
 	c_credit = models.IntegerField()
@@ -156,7 +157,7 @@ class Answerqueryadmin(models.Model):
 	modified_by = models.CharField(max_length=45, blank=True, null=True)
 
 class Events(models.Model):
-	event_id = models.AutoField(primary_key=True,default='1')
+	event_id = models.IntegerField(primary_key=True,default='1')
 	event_name = models.CharField(max_length=30)
 	description = models.CharField(max_length=30)
 	schedule = models.CharField(max_length=30)
