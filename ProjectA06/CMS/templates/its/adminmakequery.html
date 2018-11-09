@@ -45,7 +45,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown mr-3">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-user"></i>{{ current.v.ad_name }} 
+              <i class="fas fa-user"></i>{{ current.first_name }} 
             </a>
             <div class="dropdown-menu">
               <a href="{% url 'studentprofile' %}" class="dropdown-item">
@@ -95,7 +95,7 @@
                  <label for="category">Admin</label>
                   <select  name="admin_name">
         	   <ul>
- 		   {% for i in current %}
+ 		   {% for i in admin_obj %}
    		   <option value="{{i.ad_name}}"> <li>{{ i.ad_name }}</li></option>
   		   {% endfor %} 
 		   </ul>
