@@ -47,4 +47,5 @@ urlpatterns = [
     url(r'^adminqueries',views.adminqueries,name ="adminqueries"),
     url(r'^adminstudents',views.adminstudents,name ="adminstudents"),
     url(r'^callback/(?P<token>.+)$',views.callback,name='callback'),
+    url(r'^logout',views.logout,name="logout"),
 ]

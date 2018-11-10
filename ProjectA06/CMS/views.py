@@ -6,13 +6,12 @@ from django.http import HttpResponse
 from .models import *
 from django.shortcuts import render,get_list_or_404
 from django.template import loader
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt,csrf_protect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 import requests,json
-from passlib.hash import pbkdf2_sha256
 from datetime import date
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.hashers import make_password,check_password
@@ -44,20 +43,10 @@ def facultylogin(request):
 def adminlogin(request):
     return render(request,'its/adminlogin.html')
 
-@login_required(login_url ='/homepage/')
-def studenthome(request):
-	x=logged.objects.all()[0].sid
-	s=student.objects.get(s_id=x)
-	courses = s.course.split(',')
-	print(courses)
-	template = loader.get_template('its/studenthome.html')
-	context = {
-		'current':s,
-	}
-	return render(request,'its/studenthome.html')
 
 def studentlogin(request):
     return render(request,'its/studentlogin.html')
+@ csrf_protect 
 def login1(request):
 	if request.method=='POST':
 		print(request.user)
@@ -90,7 +79,7 @@ def login1(request):
 					'current' : s 
 				}
 			return HttpResponse(template.render(context,request))
-
+@csrf_protect 
 def login2(request):
 	if request.method=='POST':
 		try:
@@ -101,7 +90,7 @@ def login2(request):
 					'IDinvalid':"Invalid Username !",
 				}
 			return HttpResponse(template.render(context,request))
-		if request.POST['password'] != x.fpswd:
+		if check_password(request.POST['password'] ,x.fpswd) ==False:
 			template = loader.get_template('its/facultylogin.html')
 			context = {
 					'Passwordinvalid':"Incorrect password!",
@@ -119,7 +108,7 @@ def login2(request):
 					'current' : u2 
 				}
 			return HttpResponse(template.render(context,request))
-
+@csrf_protect 
 def login3(request):
 	if request.method=='POST':
 		try:
@@ -130,7 +119,7 @@ def login3(request):
 					'IDinvalid':"Invalid Username !",
 				}
 			return HttpResponse(template.render(context,request))
-		if request.POST['apswd'] != x.apswd:
+		if check_password(request.POST['apswd'],x.apswd) ==False:
 			template = loader.get_template('its/adminlogin.html')
 			context = {
 					'Passwordinvalid':"Incorrect password!",
@@ -149,114 +138,153 @@ def login3(request):
 				}
 			return HttpResponse(template.render(context,request))
 
+def studenthome(request):
+	if(request.session.get("id", False) != False):
+		x=logged.objects.all()[0].sid
+		s=student.objects.get(s_id=x)
+		template = loader.get_template('its/studenthome.html')
+		context = {
+			'current':s,
+		}
+		return render(request,'its/studenthome.html',context)
+	else:
+		return redirect('homepage')
 
+def logout(request):
+	request.session.flush()
+	return redirect('homepage') 
 
 def studentprofile(request):
-	x=logged.objects.all()[0].sid
-	s=student.objects.get(s_id=x)
-	template = loader.get_template('its/studentprofile.html')
-	context = {
-		'current' : s 
-	}
-	return HttpResponse(template.render(context,request))
-
+	if(request.session.get("id", False) != False):
+		x=logged.objects.all()[0].sid
+		s=student.objects.get(s_id=x)
+		template = loader.get_template('its/studentprofile.html')
+		context = {
+			'current' : s 
+		}
+		return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')
 def trackattendance(request):
-	x=logged.objects.all()[0].sid
-	s=student.objects.get(s_id=x)
-	template = loader.get_template('its/trackattendance.html')
-	context = {
-		'current':s,
-	}
-	return HttpResponse(template.render(context,request))
-	
+	if(request.session.get("id",False)!=False):
+		x=logged.objects.all()[0].sid
+		s=student.objects.get(s_id=x)
+		template = loader.get_template('its/trackattendance.html')
+		context = {
+			'current':s,
+		}
+		return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')
+
 def trackacademicprogress(request):
-	x=logged.objects.all()[0].sid
-	s=student.objects.get(s_id=x)
-	template = loader.get_template('its/trackacademicprogress.html')
-	context = {
-		'current' : s 
-	}
-	return HttpResponse(template.render(context,request))
+	if(request.session.get("id",False)!=False):
+		x=logged.objects.all()[0].sid
+		s=student.objects.get(s_id=x)
+		template = loader.get_template('its/trackacademicprogress.html')
+		context = {
+			'current' : s 
+		}
+		return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')
 
 def studentleave(request):
-	x=logged.objects.all()[0].sid
-	s=student.objects.get(s_id=x)
-	
-	if request.method=='POST':
-		s_id = x
-		reason = request.POST.get('reason', False)
-		leave_from = request.POST.get('leave_from', False)
-		leave_to = request.POST.get('leave_to', False)
-		l1=leave_from.split('-')
-		l2=leave_to.split('-')
-		d1=date(int(l1[0]),int(l1[1]),int(l1[2]))
-		d2=date(int(l2[0]),int(l2[1]),int(l2[2]))
-		delta=d2-d1
-		no_ofdays = delta.days+1
-		created_by = s.first_name
-		created_at = datetime.datetime.now().date()
-		modified_by = s.first_name
-		modified_at = datetime.datetime.now().date()
-		p = Leave.objects.create(s_id=s,reason=reason,leave_from=leave_from,leave_to=leave_to,no_ofdays=no_ofdays,created_at = created_at,created_by =  created_by,modified_at= modified_at,modified_by =  modified_by)
-		p.save()	
-	return render(request,'its/studentleave.html')
-def leavesubmit(request):
-	x=logged.objects.all()[0].sid
-	s=student.objects.get(s_id=x)
-	template = loader.get_template('its/leavesubmit.html')
-	context = {
-		'current' : s 
-	}
-	return HttpResponse(template.render(context,request))
-def adminmakequery(request):
-	u = logged.objects.all()[0].sid
-	w = student.objects.get(s_id=u)
-	v = college_admin.objects.all()	
-	template = loader.get_template('its/adminmakequery.html')
-	context = {
-			'current' : v
+	if(request.session.get("id",False)!=False):
+		x=logged.objects.all()[0].sid
+		s=student.objects.get(s_id=x)
+		context = {
+			'current':s
 		}
-	if request.method=='POST':
-		admin_name = request.POST.get('admin_name',False)
-		admin_row = college_admin.objects.get(ad_name = admin_name)
-		#print(admin_row)
-		subject = request.POST.get('subject', False)
-		query = request.POST.get('query', False)
-		created_by = w.first_name
-		created_at = datetime.datetime.now().date()
-		modified_by = w.first_name
-		modified_at = datetime.datetime.now().date()
-		p1 = admin_row.querytoadmin_set.create(subject=subject,query=query,s_id_id = u, a_id=admin_row.a_id,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
-		p1.save()
-	return HttpResponse(template.render(context,request))
+		if request.method=='POST':
+			s_id = x
+			reason = request.POST.get('reason', False)
+			leave_from = request.POST.get('leave_from', False)
+			leave_to = request.POST.get('leave_to', False)
+			l1=leave_from.split('-')
+			l2=leave_to.split('-')
+			d1=date(int(l1[0]),int(l1[1]),int(l1[2]))
+			d2=date(int(l2[0]),int(l2[1]),int(l2[2]))
+			delta=d2-d1
+			no_ofdays = delta.days+1
+			created_by = s.first_name
+			created_at = datetime.datetime.now().date()
+			modified_by = s.first_name
+			modified_at = datetime.datetime.now().date()
+			p = Leave.objects.create(s_id=s,reason=reason,leave_from=leave_from,leave_to=leave_to,no_ofdays=no_ofdays,created_at = created_at,created_by =  created_by,modified_at= modified_at,modified_by =  modified_by)
+			p.save()	
+		return render(request,'its/studentleave.html',context)
+	else:
+		return redirect('homepage')
+
+def leavesubmit(request):
+	if(request.session.get("id",False)!=False):
+		x=logged.objects.all()[0].sid
+		s=student.objects.get(s_id=x)
+		template = loader.get_template('its/leavesubmit.html')
+		context = {
+			'current' : s 
+		}
+		return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')
+
+def adminmakequery(request):
+	if(request.session.get("id",False)!=False):
+		u = logged.objects.all()[0].sid
+		w = student.objects.get(s_id=u)
+		v = college_admin.objects.all()	
+		template = loader.get_template('its/adminmakequery.html')
+		context = {
+				'current' : w,
+				'admin_obj':v
+			}
+		if request.method=='POST':
+			admin_name = request.POST.get('admin_name',False)
+			admin_row = college_admin.objects.get(ad_name = admin_name)
+			#print(admin_row)
+			subject = request.POST.get('subject', False)
+			query = request.POST.get('query', False)
+			created_by = w.first_name
+			created_at = datetime.datetime.now().date()
+			modified_by = w.first_name
+			modified_at = datetime.datetime.now().date()
+			p1 = admin_row.querytoadmin_set.create(subject=subject,query=query,s_id_id = u, a_id=admin_row.a_id,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
+			p1.save()
+		return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')
 
 def facultymakequery(request):
-	u = logged.objects.all()[0].sid	
-	#print(stu_courses)
-	v=student.objects.get(s_id=u)	
-	cs=v.courses
-	stu_courses=cs.split(',')
-	#print(v.courses)
-	template = loader.get_template('its/facultymakequery.html')
-	context = {
-			'current' : {'v':v,'links':stu_courses}
-		}
-	
-	if request.method=='POST':
-		course1 = request.POST.get('course',False)
-		print(course)
-		student_name=v.first_name
-		course_row = course.objects.get(course_name = course1)
-		faculty_row=faculty.objects.get(f_id=course_row.f_id.f_id)
-		subject = request.POST.get('subject', False)
-		query = request.POST.get('query', False)
-		created_by = w.first_name
-		created_at = datetime.datetime.now().date()
-		modified_by = w.first_name
-		modified_at = datetime.datetime.now().date()
-		p = faculty_row.query_set.create(subject=subject,query=query,s_id=u,student_name=student_name,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
-		p.save()
-	return HttpResponse(template.render(context,request))
+	if(request.session.get("id",False)!=False):
+		u = logged.objects.all()[0].sid	
+		#print(stu_courses)
+		v=student.objects.get(s_id=u)	
+		# cs=v.courses
+		# stu_courses=cs.split(',')
+		#print(v.courses)
+		template = loader.get_template('its/facultymakequery.html')
+		context = {
+				'current' : {'v':v}
+			}
+		
+		if request.method=='POST':
+			course1 = request.POST.get('course',False)
+			print(course)
+			student_name=v.first_name
+			course_row = course.objects.get(course_name = course1)
+			faculty_row=faculty.objects.get(f_id=course_row.f_id.f_id)
+			subject = request.POST.get('subject', False)
+			query = request.POST.get('query', False)
+			created_by = v.first_name
+			created_at = datetime.datetime.now().date()
+			modified_by = v.first_name
+			modified_at = datetime.datetime.now().date()
+			p = faculty_row.query_set.create(subject=subject,query=query,s_id=v,student_name=student_name,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
+			p.save()
+		return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def facultyprofile(request):
@@ -271,6 +299,7 @@ def facultyprofile(request):
 def facultyhome(request):
 	x=logged2.objects.all()[0].fid
 	f=faculty.objects.get(f_id=x)
+
 	template = loader.get_template('its/facultyhome.html')
 	context = {
 		'current' : f 
@@ -295,11 +324,14 @@ def postanswers(request):
 def facultyanswerqueries(request):
 	y=logged2.objects.all()[0].fid
 	v=faculty.objects.get(f_id=y)
+	context = {
+		'current':v
+	}
 	if request.method=='POST':
 		query = request.POST.get('query', False)
 		#a = .notificationsfromadmin_set.objects.create(query=query)
 		#a.save()	
-	return render(request,'its/facultyanswerqueries.html')
+	return render(request,'its/facultyanswerqueries.html',context)
 def teaching(request):
 	x = logged2.objects.all()[0].fid
 	f = faculty.objects.get(f_id = x)
@@ -329,7 +361,9 @@ def teachingcourse1(request):
 		obj = UploadSlides.objects.all()
 		obj = list(obj.filter(c_id = c_obj))
 		print(obj)
-		return render(request, "its/teaching.html")
+		return render(request, "its/teaching.html",{
+			'obj' :obj
+		})
 	else:
 		c_obj = course.objects.get(course_name = 'IR')
 		obj = UploadSlides.objects.all()
@@ -355,7 +389,9 @@ def teachingcourse2(request):
 		obj = UploadSlides.objects.all()
 		obj = list(obj.filter(c_id = c_obj))
 		print(obj)
-		return render(request, "its/teaching.html")
+		return render(request, "its/teaching.html",{
+			'obj':obj
+		})
 	else:
 		c_obj = course.objects.get(course_name = 'PC')
 		obj = UploadSlides.objects.all()
@@ -408,7 +444,7 @@ def addevents(request):
 		p = Events.objects.create(event_id=e+1,event_name=event_name,description=description,schedule=schedule)
 		p.save()		
 		return HttpResponse("Successfully saved")
-	return render(request,'its/addevents.html')
+	return render(request,'its/addevents.html',context)
 
 def addfaculty(request):
 	z=logged3.objects.all()[0].aid
@@ -434,7 +470,7 @@ def addfaculty(request):
 		p = faculty.objects.create(f_id=f+1,fac_name=fac_name,froll_no=froll_no,ph_no=ph_no,course_off=course_off,description=description,role_id_id=role_id_id,fpswd=fpswd)
 		p.save()		
 		return HttpResponse("Successfully saved")
-	return render(request,'its/addfaculty.html')
+	return render(request,'its/addfaculty.html',context)
 
 
 def addstudent(request):
@@ -471,7 +507,7 @@ def addstudent(request):
 			modified_at = datetime.datetime.now().date()
 			p = student.objects.create(s_id=s+1,first_name=first_name,last_name=last_name,sroll_no=sroll_no,dob=dob,gender=gender,mobile=mobile,spswd=spswd,courses= courses,email=email,role_id_id=role_id_id,sem_id=sem_id,cur_yos=cur_yos,reg_year=reg_year,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
 			p.save()		
-	return render(request,'its/addstudent.html')
+	return render(request,'its/addstudent.html',context)
 	
 def adminanswerqueries(request):
 	
@@ -526,12 +562,10 @@ def adminstudents(request):
 	return HttpResponse(template.render(context,request))
 def authenticate(token):
 	url = "https://serene-wildwood-35121.herokuapp.com/oauth/getDetails"
-	k1 = requests.get(url)
-	print(k1.status_code)
 	Payload = {'token' : token,'secret' : "32b29bfed559049a7cb82c01088b3c07759d820dfb99e43a2ecf9ef31baf31e5645679e9f99966f7911117e149fce474d2591b87da6f9f0464780853b6aea652"} 
 	k = requests.post(url,Payload)
 	
-	details = json.loads(k.content)
+	details = json.loads(k.content.decode('utf-8'))
 	print(details)	
 	return details
 
@@ -539,67 +573,52 @@ def callback(request,token):
 	info = authenticate(token)
 	template = loader.get_template('its/studenthome.html')
 	student_data = info['student']
-	s_id = student_data[0]['Id']
-	sroll_no = student_data[0]['Student_ID']
-	student_first_name = student_data[0]['Student_First_Name']
-	student_middle_name = student_data[0]['Student_Middle_Name']
-	student_last_name = student_data[0]['Student_Last_name']
-	student_dob = student_data[0]['Student_DOB']
-	student_gender = student_data[0]['Student_Gender']
 	student_email = student_data[0]['Student_Email']
-	student_mobile = student_data[0]['Student_Mobile']
-	student_mother_tongue = student_data[0]['Student_Mother_Tongue']
-	# student_registered_year = student_data[0]['Student_Registered_Year']
-	student_registered_degree = student_data[0]['Student_Registered_Degree']
-	student_registered_degree_duration = student_data[0]['Student_Registered_Degree_Duration']
-	student_cur_yearofstudy = student_data[0]['Student_Cur_YearofStudy']
-	student_cur_sem = student_data[0]['Student_Cur_Sem']
-	student_academic_status = student_data[0]['Student_Academic_Status']
-	rand_password = "student@123"
-	stu_obj = student.objects.get(first_name = student_first_name)
-	context = {'current':stu_obj}
-	if stu_obj.first_name == student_first_name:
-		return  HttpResponse(template.render(context,request))
-
-	# try:
-	# 	# stu_obj = student.objects.get(email = student_email)
-	# 	stu_obj = student.objects.get(first_name = student_first_name) 
-	# except student.DoesNotExist:
-	# 	stu_obj = None
+	s_id = student_data[0]['Id']
 	
-	# if stu_obj is not None:
-	# 	return render(request, 'its/studenthome.html', {
-	# 		'current': stu_obj
-	# 	})
-	# else:
-
-
-	# try:
-	# 	st_obj = student.objects.get(first_name = student_first_name)
-	# except student.DoesNotExist:
-	# 	st_obj = None
-	# if st_obj is None:
-	# 	try:
-	# 		user = student.objects.get(first_name = student_first_name)
-	# 	except student.DoesNotExist:
-	# 		user = None
-	# 	if user is None:
-	# 		user = student.objects.create(username = student_first_name, password = rand_password)
-	# 		user.set_password(rand_password)
-	# 		user.save()
-			# student.objects.create(s_id=s_id,first_name=student_first_name,last_name=student_last_name,sroll_no=sroll_no,dob=student_dob,
-			# gender=student_gender,mobile=student_mobile,spswd=rand_password,
-			# email=student_email,role_id_id=1,sem_id=student_cur_sem,cur_yos=student_cur_yearofstudy,reg_year=student_registered_year,
-			# created_at= datetime.datetime.now().replace(tzinfo=pytz.UTC).date(),created_by = student_first_name,modified_at= datetime.datetime.now().replace(tzinfo=pytz.UTC).date(),modified_by= student_first_name)	
-			# student = student.objects.get(user = request.user)
-			# return render(request, 'its/studenthome.html', {
-			# 	'current': student
-			# })
-	# 	print(student)
-	# else:
-	# 	user = login1(request, username = student_first_name, password = rand_password)
-	# 	if user is not None:
-	# 		login1(request, user)
-	# 		return redirect('/')
-
-
+	if(student.objects.filter(email = student_email).exists() == False):
+		new_user = student()
+		new_user.s_id = student_data[0]['Id']
+		new_user.sroll_no = student_data[0]['Student_ID']
+		new_user.first_name = student_data[0]['Student_First_Name']
+		new_user.middle_name = student_data[0]['Student_Middle_Name']
+		new_user.last_name = student_data[0]['Student_Last_name']
+		#print( student_data[0]['Student_DOB'][:10])
+		new_user.dob = getDate(student_data[0]['Student_DOB'][:10])
+		new_user.gender = student_data[0]['Student_Gender']
+		new_user.mobile = student_data[0]['Student_Mobile']
+		new_user.email = student_data[0]['Student_Email']
+		#new_user.student_mother_tongue = student_data[0]['Student_Mother_Tongue']
+		new_user.reg_year = int(student_data[0]['Student_Cur_YearofStudy']) - int((student_data[0]['Student_Cur_Sem'])/2)
+		#new_user.student_registered_degree = student_data[0]['Student_Registered_Degree']
+		#new_user.student_registered_degree_duration = student_data[0]['Student_Registered_Degree_Duration']
+		r= role.objects.get(role_name = "student")
+		new_user.role_id = r
+		
+		new_user.cur_yos = student_data[0]['Student_Cur_YearofStudy']
+		new_user.sem_id = student_data[0]['Student_Cur_Sem']
+		#new_user.student_academic_status = student_data[0]['Student_Academic_Status']
+		new_user.spswd = make_password("iamstudent")
+		#print(new_user.objects.all())
+		new_user.save()
+	login_user = student.objects.get(email=student_email)
+	request.session['id'] = s_id
+	request.session['first_name'] = login_user.first_name
+	request.session['last_name'] = login_user.last_name
+	request.session['email'] = login_user.email
+	logged.objects.all().delete()
+	u = logged()
+	u.sid = login_user.s_id
+	u.save()
+	context = {'current':login_user}
+	if login_user.email == student_email:
+		return  HttpResponse(template.render(context,request))	
+	
+def getDate(s):
+	if(s == "0000-00-00"):
+		return datetime.date(1998,2,23)
+	d = s.split('-')
+	year = int(d[0])
+	month = int(d[1])
+	day = int(d[2])
+	return datetime.date(year,month,day)
