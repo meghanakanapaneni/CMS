@@ -43,7 +43,7 @@
             </div>
             <div class="card-body">
               <form method="post" action="{% url 'login2' %}">
-              {% csrf_token %}
+                {% csrf_token %}
                 <div class="form-group">
                   <label for="froll_no">Username</label>
                   <input type="text" name="f_email" value="" class="form-control">

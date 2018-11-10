@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from .models import *
 from django.shortcuts import render,get_list_or_404
 from django.template import loader
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt,csrf_protect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 import requests,json
@@ -46,6 +46,7 @@ def adminlogin(request):
 
 def studentlogin(request):
     return render(request,'its/studentlogin.html')
+@ csrf_protect 
 def login1(request):
 	if request.method=='POST':
 		print(request.user)
@@ -78,7 +79,7 @@ def login1(request):
 					'current' : s 
 				}
 			return HttpResponse(template.render(context,request))
-
+@csrf_protect 
 def login2(request):
 	if request.method=='POST':
 		try:
@@ -89,7 +90,7 @@ def login2(request):
 					'IDinvalid':"Invalid Username !",
 				}
 			return HttpResponse(template.render(context,request))
-		if request.POST['password'] != x.fpswd:
+		if check_password(request.POST['password'] ,x.fpswd) ==False:
 			template = loader.get_template('its/facultylogin.html')
 			context = {
 					'Passwordinvalid':"Incorrect password!",
@@ -107,7 +108,7 @@ def login2(request):
 					'current' : u2 
 				}
 			return HttpResponse(template.render(context,request))
-
+@csrf_protect 
 def login3(request):
 	if request.method=='POST':
 		try:
@@ -118,7 +119,7 @@ def login3(request):
 					'IDinvalid':"Invalid Username !",
 				}
 			return HttpResponse(template.render(context,request))
-		if request.POST['apswd'] != x.apswd:
+		if check_password(request.POST['apswd'],x.apswd) ==False:
 			template = loader.get_template('its/adminlogin.html')
 			context = {
 					'Passwordinvalid':"Incorrect password!",
@@ -168,6 +169,14 @@ def trackattendance(request):
 	if(request.session.get("id",False)!=False):
 		x=logged.objects.all()[0].sid
 		s=student.objects.get(s_id=x)
+		v=registeredcourses.objects.get(s_id=u)	
+		cs=v.courses
+		stu_courses=cs.split(',')
+		co=courses.objects.all()
+		
+		for i in range(0,length(stu_courses)):
+			a=courses.objects.get(course_name=stu_courses[i])
+			courses_list[i]=a.c_id
 		template = loader.get_template('its/trackattendance.html')
 		context = {
 			'current':s,
@@ -180,9 +189,20 @@ def trackacademicprogress(request):
 	if(request.session.get("id",False)!=False):
 		x=logged.objects.all()[0].sid
 		s=student.objects.get(s_id=x)
+		g=Grade.objects.filter(s_id=x)
+		sum=0
+		credit_sum=0
+		for i in g:
+			print(i.points)
+			c=course.objects.get(c_id=i.c_id.c_id)
+			sum=sum+(i.points*c.c_credit)
+			credit_sum=credit_sum+c.c_credit
+
+		cgpa=(sum/credit_sum)
+		print(cgpa)
 		template = loader.get_template('its/trackacademicprogress.html')
 		context = {
-			'current' : s 
+			'current' : { 's':s,'g':g , 'cgpa':cgpa} 
 		}
 		return HttpResponse(template.render(context,request))
 	else:
@@ -258,13 +278,14 @@ def facultymakequery(request):
 	if(request.session.get("id",False)!=False):
 		u = logged.objects.all()[0].sid	
 		#print(stu_courses)
-		v=student.objects.get(s_id=u)	
-		# cs=v.courses
-		# stu_courses=cs.split(',')
-		#print(v.courses)
+		s=student.objects.get(s_id=u)
+		v=registeredcourses.objects.get(s_id=u)	
+		cs=v.courses
+		stu_courses=cs.split(',')
+		print(v.courses)
 		template = loader.get_template('its/facultymakequery.html')
 		context = {
-				'current' : {'v':v}
+				'current' : {'links':stu_courses ,'s':s}
 			}
 		
 		if request.method=='POST':
