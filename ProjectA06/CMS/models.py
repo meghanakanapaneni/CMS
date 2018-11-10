@@ -76,6 +76,12 @@ class course(models.Model):
 	modified_at = models.DateField(blank=True, null=True)
 	modified_by = models.CharField(max_length=45, blank=True, null=True)
 
+
+class registeredcourses(models.Model):
+	s_id = models.ForeignKey(student , on_delete = models.CASCADE)
+	courses = models.CharField(max_length=100)
+
+
 class days(models.Model):
 	day_id = models.IntegerField()
 	day  = models.CharField(max_length = 20)
