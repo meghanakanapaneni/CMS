@@ -80,36 +80,43 @@
   <section id="actions" class="py-4 mb-4 bg-light">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
           <a href="{% url 'trackattendance' %}" class="btn btn-primary btn-block">
-            <i class="fas fa-plus"></i> Track Attendance
+          Track Attendance
           </a>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <a href="{% url 'trackacademicprogress' %}" class="btn btn-success btn-block">
-            <i class="fas fa-plus"></i> Track Academic Progress
+         Track Academic Progress
           </a>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-2">
         <a href="{% url 'studentleave' %}" class="btn btn-success btn-block">
-          <i class="fas fa-plus"></i> Apply Leave
+           Apply Leave
         </a>
     </div>
-
-
-        <div class="col-md-3">
-          <a href="makequeries' %}" class="btn btn-primary btn-toggle" data-toggle="dropdown">
-            <i class="fas fa-arrow-down"></i> Make Queries
+    <div class="col-md-2">
+      <a href="makequeries' %}" class="btn btn-primary btn-toggle" data-toggle="dropdown">
+        <i class="fas fa-arrow-down"></i> Make Queries
+      </a>
+      <div class="dropdown-menu">
+          <a href="{% url 'adminmakequery' %}" class="dropdown-item">
+            <i class="fas fa-user-circle"></i> Admin
           </a>
-          <div class="dropdown-menu">
-              <a href="{% url 'adminmakequery' %}" class="dropdown-item">
-                <i class="fas fa-user-circle"></i> Admin
-              </a>
-              <a href="{% url 'facultymakequery' %}" class="dropdown-item">
-                <i class="fas fa-user-circle"></i> Faculty
-              </a>
-            </div>
+          <a href="{% url 'facultymakequery' %}" class="dropdown-item">
+            <i class="fas fa-user-circle"></i> Faculty
+          </a>
         </div>
+    </div>
+    <div class="col-md-2">
+      <a href="{% url 'slides' %}" class="btn btn-success btn-block">
+        Slides
+      </a>
+  </div>
+
+
+
+
         
 
       </div>

@@ -20,6 +20,7 @@ import urllib.request
 import json 
 import pytz
 from .models import student
+import operator
 # Create your views here.
 def dashboard(request):
 	print(request.user)
@@ -79,35 +80,7 @@ def login1(request):
 					'current' : s 
 				}
 			return HttpResponse(template.render(context,request))
-@csrf_protect 
-def login2(request):
-	if request.method=='POST':
-		try:
-			x = faculty.objects.get(f_email=request.POST['f_email'])
-		except(KeyError, faculty.DoesNotExist):
-			template = loader.get_template('its/facultylogin.html')
-			context = {
-					'IDinvalid':"Invalid Username !",
-				}
-			return HttpResponse(template.render(context,request))
-		if check_password(request.POST['password'] ,x.fpswd) ==False:
-			template = loader.get_template('its/facultylogin.html')
-			context = {
-					'Passwordinvalid':"Incorrect password!",
-				}
-			return HttpResponse(template.render(context,request))
 
-		else:
-			logged2.objects.all().delete()
-			u2 = logged2()
-			u2.fid = x.f_id
-			u2.save()
-			u2 = logged2.objects.all()[0].fid
-			template = loader.get_template('its/facultyhome.html')
-			context = {
-					'current' : u2 
-				}
-			return HttpResponse(template.render(context,request))
 @csrf_protect 
 def login3(request):
 	if request.method=='POST':
@@ -172,11 +145,6 @@ def trackattendance(request):
 		v=registeredcourses.objects.get(s_id=u)	
 		cs=v.courses
 		stu_courses=cs.split(',')
-		co=courses.objects.all()
-		
-		for i in range(0,length(stu_courses)):
-			a=courses.objects.get(course_name=stu_courses[i])
-			courses_list[i]=a.c_id
 		template = loader.get_template('its/trackattendance.html')
 		context = {
 			'current':s,
@@ -184,6 +152,7 @@ def trackattendance(request):
 		return HttpResponse(template.render(context,request))
 	else:
 		return redirect('homepage')
+
 
 def trackacademicprogress(request):
 	if(request.session.get("id",False)!=False):
@@ -199,14 +168,48 @@ def trackacademicprogress(request):
 			credit_sum=credit_sum+c.c_credit
 
 		cgpa=(sum/credit_sum)
-		print(cgpa)
 		template = loader.get_template('its/trackacademicprogress.html')
 		context = {
-			'current' : { 's':s,'g':g , 'cgpa':cgpa} 
+				'current' : {'sem':range(1,s.sem_id),'s':s ,'cgpa':cgpa}
+			}
+		return HttpResponse(template.render(context,request))
+		
+
+
+def trackaca1(request):
+	if(request.session.get("id",False)!=False):
+		x=logged.objects.all()[0].sid
+		if request.method=='POST':
+			semes = request.POST.get('semes',False)
+			logged.objects.all().delete()
+			u = logged()
+			u.sid = x
+			u.sem_id=semes
+			u.save()
+		x=logged.objects.all()[0].sid
+		sem_id1=logged.objects.all()[0].sem_id
+
+		print(sem_id1)
+		s=student.objects.get(s_id=x)
+		g=Grade.objects.filter(s_id=x)
+		sum1=0
+		credit_sum=0
+		for i in g:
+			c=course.objects.get(c_id=i.c_id.c_id)
+			if(c.sem_id==sem_id1):
+					sum1=sum1+(i.points*c.c_credit)
+					credit_sum=credit_sum+c.c_credit
+		sgpa=sum1/credit_sum
+
+		template = loader.get_template('its/trackaca1.html')
+		context = {
+			'current' : { 's':s,'g':g ,'sgpa':sgpa , 'sem_id':sem_id1} 
 		}
 		return HttpResponse(template.render(context,request))
 	else:
 		return redirect('homepage')
+
+
 
 def studentleave(request):
 	if(request.session.get("id",False)!=False):
@@ -261,14 +264,13 @@ def adminmakequery(request):
 		if request.method=='POST':
 			admin_name = request.POST.get('admin_name',False)
 			admin_row = college_admin.objects.get(ad_name = admin_name)
-			#print(admin_row)
 			subject = request.POST.get('subject', False)
 			query = request.POST.get('query', False)
 			created_by = w.first_name
 			created_at = datetime.datetime.now().date()
 			modified_by = w.first_name
 			modified_at = datetime.datetime.now().date()
-			p1 = admin_row.querytoadmin_set.create(subject=subject,query=query,s_id_id = u, a_id=admin_row.a_id,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
+			p1 = admin_row.querytoadmin_set.create(subject=subject,query=query,s_id_id = u,student_name=w.first_name,a_id=admin_row.a_id,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
 			p1.save()
 		return HttpResponse(template.render(context,request))
 	else:
@@ -282,7 +284,7 @@ def facultymakequery(request):
 		v=registeredcourses.objects.get(s_id=u)	
 		cs=v.courses
 		stu_courses=cs.split(',')
-		print(v.courses)
+		#print(v.courses)
 		template = loader.get_template('its/facultymakequery.html')
 		context = {
 				'current' : {'links':stu_courses ,'s':s}
@@ -290,41 +292,107 @@ def facultymakequery(request):
 		
 		if request.method=='POST':
 			course1 = request.POST.get('course',False)
-			print(course)
+			#print(course)
 			student_name=v.first_name
 			course_row = course.objects.get(course_name = course1)
 			faculty_row=faculty.objects.get(f_id=course_row.f_id.f_id)
-			subject = request.POST.get('subject', False)
+			subject = request.POST.get('subject', Falase)
 			query = request.POST.get('query', False)
-			created_by = v.first_name
-			created_at = datetime.datetime.now().date()
-			modified_by = v.first_name
-			modified_at = datetime.datetime.now().date()
-			p = faculty_row.query_set.create(subject=subject,query=query,s_id=v,student_name=student_name,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
-			p.save()
+			if query.objects.get(c_id = course_row.c_id) and query.objects.get(query = query) and query.objects.get(student_name = student_name):
+				created_by = v.first_name
+				created_at = datetime.datetime.now().date()
+				modified_by = v.first_name
+				modified_at = datetime.datetime.now().date()
+				p = faculty_row.query_set.create(subject=subject,query=query,s_id=v,student_name=student_name,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
+				p.save()
+				return HttpResponse(template.render(context,request))
+			else:
+				return HttpResponse("Query has been already made")
+	else:
+		return redirect('homepage')
+def showslides(request):
+	if(request.session.get("id",False)!=False):
+		u = logged.objects.all()[0].sid	
+		s=student.objects.get(s_id=u)
+		v=registeredcourses.objects.get(s_id=u)	
+		cs=v.courses
+		stu_courses=cs.split(',')
+		
+		template = loader.get_template('its/slides.html')
+		
+		if request.method == "POST":
+			courses = request.POST.get("course")
+			print(courses)
+			c_obj = course.objects.get(course_name = courses)
+			obj = UploadSlides.objects.all()
+			obj = list(obj.filter(c_id = c_obj))
+			return render(request,'its/slides.html', {
+				'obj': obj,
+				'current' : {'links':stu_courses ,'s':s}
+			})	
+		return render(request,'its/slides.html', {
+			# 'obj': obj,
+			'current' : {'links':stu_courses ,'s':s}
+		})	 
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@csrf_protect 
+def login2(request):
+	if request.method=='POST':
+		try:
+			x = faculty.objects.get(f_email=request.POST['f_email'])
+		except(KeyError, faculty.DoesNotExist):
+			template = loader.get_template('its/facultylogin.html')
+			context = {
+					'IDinvalid':"Invalid Username !",
+				}
+			return HttpResponse("Invalid Username")
+		
+		if (request.POST['password'] ,x.fpswd) ==False:
+			template = loader.get_template('its/facultylogin.html')
+			context = {
+					'Passwordinvalid':"Incorrect password!",
+				}
+			return HttpResponse("Incorrect password")
+
+		else:
+			logged2.objects.all().delete()
+			u2 = logged2()
+			u2.fid = x.f_id
+			u2.save()
+			u2 = logged2.objects.all()[0].fid
+			request.session["fid"] = x.f_id
+			request.session["femail"] = x.f_email
+			template = loader.get_template('its/facultyhome.html')
+			context = {
+					'current' : u2 
+				}
+			return HttpResponse(template.render(context,request))
+				
+def facultyprofile(request):
+	if(request.session.get("fid",False)!=False):
+		x=logged2.objects.all()[0].fid
+		f=faculty.objects.get(f_id=x)
+		template = loader.get_template('its/facultyprofile.html')
+		context = {
+			'current' : f 
+		}
+		return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')
+def facultyhome(request):
+	if(request.session.get("fid",False)!=False):
+		x=logged2.objects.all()[0].fid
+		f=faculty.objects.get(f_id=x)
+
+		template = loader.get_template('its/facultyhome.html')
+		context = {
+			'current' : f 
+		}
 		return HttpResponse(template.render(context,request))
 	else:
 		return redirect('homepage')
 
-#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-def facultyprofile(request):
-	x=logged2.objects.all()[0].fid
-	f=faculty.objects.get(f_id=x)
-	template = loader.get_template('its/facultyprofile.html')
-	context = {
-		'current' : f 
-	}
-	return HttpResponse(template.render(context,request))
-
-def facultyhome(request):
-	x=logged2.objects.all()[0].fid
-	f=faculty.objects.get(f_id=x)
-
-	template = loader.get_template('its/facultyhome.html')
-	context = {
-		'current' : f 
-	}
-	return HttpResponse(template.render(context,request))
 def facultylogin(request):
     return render(request,'its/facultylogin.html')
 
@@ -333,92 +401,118 @@ def answerqueries(request):
 
 
 def postanswers(request):
-	x=logged2.objects.all()[0].fid
-	f=faculty.objects.get(f_id=x)
-	faculty_queries = f.query_set.all()
-	template = loader.get_template('its/facultyhome.html')
-	context = {
-		'current' : {'f':f , 'faculty_queries' : faculty_queries} 
-	}
-	return HttpResponse(template.render(context,request))
+	if(request.session.get("fid",False)!=False):
+		x=logged2.objects.all()[0].fid
+		f=faculty.objects.get(f_id=x)
+		faculty_queries = f.query_set.all()
+		template = loader.get_template('its/facultyhome.html')
+		context = {
+			'current' : {'f':f , 'faculty_queries' : faculty_queries} 
+		}
+		return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')
+
 def facultyanswerqueries(request):
-	y=logged2.objects.all()[0].fid
-	v=faculty.objects.get(f_id=y)
-	context = {
-		'current':v
-	}
-	if request.method=='POST':
-		query = request.POST.get('query', False)
-		#a = .notificationsfromadmin_set.objects.create(query=query)
-		#a.save()	
-	return render(request,'its/facultyanswerqueries.html',context)
+	if(request.session.get("fid",False)!=False):
+		y=logged2.objects.all()[0].fid
+		v=faculty.objects.get(f_id=y)
+		context = {
+			'current':v
+		}
+		if request.method=='POST':
+			query = request.POST.get('query', False)
+			#a = .notificationsfromadmin_set.objects.create(query=query)
+			#a.save()	
+		return render(request,'its/facultyanswerqueries.html',context)
+	else:
+		return redirect('homepage')
+
+# def teaching(request):
+# 	x = logged2.objects.all()[0].fid
+# 	f = faculty.objects.get(f_id = x)
+# 	c = f.course_off
+# 	courses_list = c.split(',')
+# 	print(courses_list)
+# 	context = {
+# 		'courses_list':courses_list,
+# 		'current':f
+# 	}
+# 	return render(request,'its/teaching.html',context)
+	
 def teaching(request):
 	x = logged2.objects.all()[0].fid
 	f = faculty.objects.get(f_id = x)
 	c = f.course_off
 	courses_list = c.split(',')
-	print(courses_list)
+	#print(courses_list)
 	context = {
 		'courses_list':courses_list,
 		'current':f
 	}
+	if request.method == 'POST' and request.FILES['myfile']:
+		x=logged2.objects.all()[0].fid
+		s=faculty.objects.get(f_id=x)
+		course_name = request.POST.get('course')
+		print(course_name)
+		c_obj = course.objects.get(course_name = course_name)
+		f_id = s
+		myfile = request.FILES['myfile']
+		topic  = request.POST.get('topic')
+		readings = request.POST.get('readings')
+		fs = FileSystemStorage()
+		filename = fs.save('slides/'+ myfile.name, myfile)
+		uploaded_file_url = fs.url(filename)
+		if (UploadSlides.objects.filter(topic = topic)) != False:  
+			UploadSlides.objects.create(c_id = c_obj, f_id = f_id, topic = topic ,readings = readings,docfile = uploaded_file_url)
+			obj = UploadSlides.objects.all()
+			obj = list(obj.filter(c_id = c_obj))
+			print(obj)
+			return render(request, "its/teaching.html",{
+				'obj' :obj,
+				'courses_list':courses_list,
+				'current':f,
+				'message': 'slides uploaded'
+			})
+		else:
+			return HttpResponse("Slides already uploaded")
+	# else:
+	# 	#c_obj = course.objects.get(course_name = course_name)
+	# 	obj = UploadSlides.objects.all()
+	# 	obj = list(obj.filter(c_id = c_obj))
+	# 	return render(request,'its/Teaching/IR.html', {
+	# 		'obj': obj
+	# 	})
 	return render(request,'its/teaching.html',context)
-	
-def teachingcourse1(request):
-	if request.method == 'POST' and request.FILES['myfile']:
-		x=logged2.objects.all()[0].fid
-		s=faculty.objects.get(f_id=x)
-		f_id = s
-		myfile = request.FILES['myfile']
-		topic  = request.POST.get('topic')
-		readings = request.POST.get('readings')
-		# course_name = request.POST.get('course')
-		c_obj = course.objects.get(course_name = 'IR')
-		fs = FileSystemStorage()
-		filename = fs.save('slides/'+ myfile.name, myfile)
-		uploaded_file_url = fs.url(filename)
-		UploadSlides.objects.create(c_id = c_obj, f_id = f_id, topic = topic ,readings = readings,docfile = uploaded_file_url)
-		obj = UploadSlides.objects.all()
-		obj = list(obj.filter(c_id = c_obj))
-		print(obj)
-		return render(request, "its/teaching.html",{
-			'obj' :obj
-		})
-	else:
-		c_obj = course.objects.get(course_name = 'IR')
-		obj = UploadSlides.objects.all()
-		obj = list(obj.filter(c_id = c_obj))
-		return render(request,'its/Teaching/IR.html', {
-			'obj': obj
-		})
 
-def teachingcourse2(request):
-	if request.method == 'POST' and request.FILES['myfile']:
-		x=logged2.objects.all()[0].fid
-		s=faculty.objects.get(f_id=x)
-		f_id = s
-		myfile = request.FILES['myfile']
-		topic  = request.POST.get('topic')
-		readings = request.POST.get('readings')
-		# course_name = request.POST.get('course')
-		c_obj = course.objects.get(course_name = 'PC')
-		fs = FileSystemStorage()
-		filename = fs.save('slides/'+ myfile.name, myfile)
-		uploaded_file_url = fs.url(filename)
-		UploadSlides.objects.create(c_id = c_obj, f_id = f_id, topic = topic ,readings = readings,docfile = uploaded_file_url)
-		obj = UploadSlides.objects.all()
-		obj = list(obj.filter(c_id = c_obj))
-		print(obj)
-		return render(request, "its/teaching.html",{
-			'obj':obj
-		})
-	else:
-		c_obj = course.objects.get(course_name = 'PC')
-		obj = UploadSlides.objects.all()
-		obj = list(obj.filter(c_id = c_obj))
-		return render(request,'its/Teaching/PC.html', {
-			'obj': obj
-		})
+
+# def teachingcourse2(request):
+# 	if request.method == 'POST' and request.FILES['myfile']:
+# 		x=logged2.objects.all()[0].fid
+# 		s=faculty.objects.get(f_id=x)
+# 		f_id = s
+# 		myfile = request.FILES['myfile']
+# 		topic  = request.POST.get('topic')
+# 		readings = request.POST.get('readings')
+# 		# course_name = request.POST.get('course')
+# 		c_obj = course.objects.get(course_name = 'PC')
+# 		fs = FileSystemStorage()
+# 		filename = fs.save('slides/'+ myfile.name, myfile)
+# 		uploaded_file_url = fs.url(filename)
+# 		UploadSlides.objects.create(c_id = c_obj, f_id = f_id, topic = topic ,readings = readings,docfile = uploaded_file_url)
+# 		obj = UploadSlides.objects.all()
+# 		obj = list(obj.filter(c_id = c_obj))
+# 		print(obj)
+# 		return render(request, "its/teaching.html",{
+# 			'obj':obj
+# 		})
+# 	else:
+# 		c_obj = course.objects.get(course_name = 'PC')
+# 		obj = UploadSlides.objects.all()
+# 		obj = list(obj.filter(c_id = c_obj))
+# 		return render(request,'its/Teaching/PC.html', {
+# 			'obj': obj
+# 		})
 
 
 def queries(request):
@@ -459,11 +553,14 @@ def addevents(request):
 	if request.method=='POST':
 		e = Events.objects.count()
 		event_name = request.POST.get('event_name', False)
-		description = request.POST.get('description', False)
-		schedule = request.POST.get('schedule', False)
-		p = Events.objects.create(event_id=e+1,event_name=event_name,description=description,schedule=schedule)
-		p.save()		
-		return HttpResponse("Successfully saved")
+		if Events.objects.get(event_name = event_name) != False:
+			description = request.POST.get('description', False)
+			schedule = request.POST.get('schedule', False)
+			p = Events.objects.create(event_id=e+1,event_name=event_name,description=description,schedule=schedule)
+			p.save()		
+			return HttpResponse("Successfully saved")
+		else:
+			return HttpResponse("Event already exists")	
 	return render(request,'its/addevents.html',context)
 
 def addfaculty(request):
@@ -477,19 +574,21 @@ def addfaculty(request):
 		f = faculty.objects.count()
 		fac_name = request.POST.get('fac_name', False)
 		froll_no = request.POST.get('froll_no', False)
-		ph_no = request.POST.get('ph_no', False)
-		course_off = request.POST.get('course_off', False)
-		description = request.POST.get('description', False)
-		role_id_id = 2
-		fpswd = make_password(request.POST.get('fpswd', False))
-		created_by = a.ad_name
-		created_at = datetime.datetime.now().date()
-		modified_by = a.ad_name
-		modified_at = datetime.datetime.now().date()
-
-		p = faculty.objects.create(f_id=f+1,fac_name=fac_name,froll_no=froll_no,ph_no=ph_no,course_off=course_off,description=description,role_id_id=role_id_id,fpswd=fpswd)
-		p.save()		
-		return HttpResponse("Successfully saved")
+		if faculty.objects.get(fac_name = fac_name) != False:
+			ph_no = request.POST.get('ph_no', False)
+			course_off = request.POST.get('course_off', False)
+			description = request.POST.get('description', False)
+			role_id_id = 2
+			fpswd = make_password(request.POST.get('fpswd', False))
+			created_by = a.ad_name
+			created_at = datetime.datetime.now().date()
+			modified_by = a.ad_name
+			modified_at = datetime.datetime.now().date()
+			p = faculty.objects.create(f_id=f+1,fac_name=fac_name,froll_no=froll_no,ph_no=ph_no,course_off=course_off,description=description,role_id_id=role_id_id,fpswd=fpswd)
+			p.save()		
+			return HttpResponse("Successfully saved")
+		else:
+			return HttpResponse("Faculty already exists")
 	return render(request,'its/addfaculty.html',context)
 
 
@@ -535,7 +634,7 @@ def adminanswerqueries(request):
 	v=college_admin.objects.get(a_id=z)
 	template = loader.get_template('its/adminanswerqueries.html')
 	context = {
-		'current' : a 
+		'current' : v 
 	}	
 	return HttpResponse(template.render(context,request))
 

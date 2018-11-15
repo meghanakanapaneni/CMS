@@ -48,7 +48,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown mr-3">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-user"></i> Welcome Brad
+              <i class="fas fa-user"></i> {{ current.first_name}}
             </a>
             <div class="dropdown-menu">
               <a href="{% url 'studentprofile' %}" class="dropdown-item">
@@ -83,7 +83,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <a href="studenthome' %}" class="btn btn-light btn-block">
+          <a href="{% url 'studenthome' %}" class="btn btn-light btn-block">
             <i class="fas fa-arrow-left"></i> Back To Homepage
           </a>
         </div>

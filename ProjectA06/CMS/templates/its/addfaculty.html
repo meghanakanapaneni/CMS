@@ -84,23 +84,23 @@
 		{% csrf_token %}
                 <div class="form-group">
                   <label for="fac_name">Name</label>
-                  <input type="text" name="fac_name" class="form-control" value="">
+                  <input type="text" name="fac_name" class="form-control" value="" required>
                 </div>
                 <div class="form-group">
                   <label for="froll_no">Faculty roll_no</label>
-                  <input type="text" name="froll_no" class="form-control" value="">
+                  <input type="text" name="froll_no" class="form-control" value=""required>
                 </div>
                 <div class="form-group">
                   <label for="ph_no">Phone Number</label>
-                  <input type="text" name="ph_no" class="form-control" value="">
+                  <input type="text" name="ph_no" class="form-control" value=""required>
                 </div>
                 <div class="form-group">
                   <label for="course_off">Courses Offered</label>
-                  <input type="text" name="course_off" class="form-control" value="">
+                  <input type="text" name="course_off" class="form-control" value=""required>
                 </div>
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <input type="text" name="description" class="form-control" value="">
+                  <input type="text" name="description" class="form-control" value=""required>
                 </div>
                 <!-- <div class="form-group">
                   <label for="role_id_id">Role_id</label>
@@ -108,7 +108,7 @@
                 </div> -->
                 <div class="form-group">
                   <label for="fpswd">password</label>
-                  <input type="password" name="fpswd" class="form-control" value="">
+                  <input type="password" name="fpswd" class="form-control" value=""required>
                 </div>
                  <input type="submit" value="Add faculty"/>
               </form>

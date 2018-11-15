@@ -12,7 +12,7 @@ class logged2(models.Model):
 	fid = models.IntegerField()
 class logged(models.Model):
 	sid = models.IntegerField()
-
+	sem_id=models.IntegerField(default=0)
 class logged3(models.Model):
 	aid = models.IntegerField()
 
