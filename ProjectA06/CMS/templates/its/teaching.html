@@ -97,21 +97,45 @@
                         </li>
                     </ul>
                     {% endfor %} -->
-                    <ul class="list-group"> 
-                        <li class="list-group-item">
-                            <a  href="{% url 'IR' %}">Information Retrieval</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a  href="{% url 'PC' %}">Programming in C</a>
-                        </li>
+                    <form method = 'POST' enctype="multipart/form-data" action = "{% url 'teaching' %}">
+                      {% csrf_token %}
+                  <select  name="course">
+                    <ul>
+                        {% for course in courses_list %}
+                        <option value="{{course}}">  <li name= 'course'>{{ course }}</li></option>
+                       {% endfor %}
+                      </ul>
                     </ul>
-                      </div>
+                    </select>
+                  </div>
+
               </div>
                     <br/>
             </div>           
           </div>
         </div>
       </div>
+        
+          
+            <div class= "container">
+                <div class="form-group">
+                    <!-- <label for="Course">Course</label>
+                    <input type="text" class = "form-control" value="IR" name = "course"> -->
+                    <label for="Topic">Topic</label>
+                    <input type="text" class = "form-control" value="" name = "topic" required>
+                    <label for="Readings">Readings</label>                    
+                    <input type="text" class = "form-control" value="" name = "readings" required>
+                    <label for="file">Upload File</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="image" name = "myfile" required>
+                        <label for="file" class="custom-file-label">Choose File</label>
+                    </div>
+                    <label for="submit">Submit</label>
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+          </form>
+        
     </section>
 
   <!-- FOOTER -->

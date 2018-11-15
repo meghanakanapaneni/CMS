@@ -77,13 +77,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cms006',
-        'USER':'root',
-        'PASSWORD':'12345678',
-        'HOST':'localhost',
+        #'USER':'root',
+        #'PASSWORD':'12345678',
+        #'HOST':'localhost',
 
-        #'USER': 'admin1',
-        #'PASSWORD': 'Remotemimi@98',
-        #'HOST': '139.59.6.13',
+        'USER': 'admin1',
+        'PASSWORD': 'Remotemimi@98',
+        'HOST': '139.59.6.13',
         'PORT': '3306',
     }
 }

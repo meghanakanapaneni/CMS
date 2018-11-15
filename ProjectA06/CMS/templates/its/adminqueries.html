@@ -96,12 +96,13 @@
               <tbody>
               
               
-             {% for query in current %}
+             {% for query in current.admin_queries %}
                <tr>
                  
-                  <td>{{ query.student_name }}</td>
                   <td>{{ query.subject }}</td>
                   <td>{{ query.query }}</td>
+                  <td>{{ query.student_name }}</td>
+                 
                   <td>
                     <a href="{% url 'adminanswerqueries' %}" class="btn btn-secondary">
                       <i class="fas fa-angle-double-right"></i> Answer
