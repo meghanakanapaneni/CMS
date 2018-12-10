@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
-  <title>AddEvent</title>
+  <title>Answer Query</title>
 </head>
 
 <body>
@@ -80,7 +80,7 @@
               <h4>Answer Query</h4>
             </div>
             <div class="card-body">
-                 <form action="../adminanswerqueries/" method="post" >
+                <form method="post" action="{% url 'adminanswerqueries' %}">
 		{% csrf_token %}
                 <div class="form-group">
                   <label for="query">Answer</label>

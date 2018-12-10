@@ -29,7 +29,7 @@
             <a href="{% url 'postanswers'%}" class="nav-link">Answer queries</a>
           </li>
           <li class="nav-item px-2">
-            <a href="#" class="nav-link">Update classes</a>
+            <a href="{% url 'facultyupdateclasses'%}" class="nav-link">Update classes</a>
           </li>
         </ul>
 
@@ -81,7 +81,7 @@
           </a>
         </div>
         <div class="col-md-3">
-          <a href="#" class="btn btn-warning btn-block" >
+          <a href="{% url 'facultyupdateclasses'%}" class="btn btn-warning btn-block" >
             Update Classes
           </a>
         </div>
@@ -102,25 +102,21 @@
                 <tr>
                   <th>#</th>
                   <th>Student Name</th>
-                  <th>Course</th>
+                  <th>Subject</th>
+                  <th>Query</th>
                   <th>Date</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
+                {% for i in queries %}
                 <tr>
-                  <td>1</td>
-                  <td>Prasanna</td>
-                  <td>Web Development</td>
-                  <td>May 10 2018</td>
-                  <td>
-                    <a href="{% url 'details'%}" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Details
-                    </a>
-                  </td>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{i.s_id.first_name}}{{ i.s_id.last_name}}</td>
+                  <td>{{i.subject}}</td>
+                  <td>{{i.query}}</td>
+                  <td>{{i.created_at}}</td>
                 </tr>
-                <tr>
-
+                {% endfor %}
                   </td>
                 </tr>
               </tbody>
@@ -148,15 +144,7 @@
             </div>
           </div>
 
-          <div class="card text-center bg-warning text-white mb-3">
-            <div class="card-body">
-              <h3>Students</h3>
-              <!-- <h4 class="display-4">  
-                <i class="fas fa-Students"></i> 4
-              </h4> -->
-              <a href="{% url 'adminstudents'%}" class="btn btn-outline-light btn-sm">View</a>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -303,6 +291,11 @@
 
     CKEDITOR.replace('editor1');
   </script>
+  <script>
+      window.location.hash="no-back-button";
+      window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+      window.onhashchange=function(){window.location.hash="no-back-button";}
+     </script>
 </body>
 
 </html>

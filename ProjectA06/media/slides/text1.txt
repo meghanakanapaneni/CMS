@@ -1,0 +1,1 @@
+insert into cms_adm(ad_name,aroll_no,role_id,apswd)values('Clover','A001','3','iiits@123'),('Shaam','A002','3','111ts@123'),('Smith','A003','3','1iits@123'),('Robert','A004','3','i11ts@123'),('Chris','A005','3','i1its@123');
