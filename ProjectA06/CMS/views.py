@@ -142,7 +142,6 @@ def studentprofile(request):
 		template = loader.get_template('its/studentprofile.html')
 		context = {
 			'current' : s ,
-			'all_queries':All_queries,
 		}
 		return HttpResponse(template.render(context,request))
 	else:
@@ -292,24 +291,17 @@ def adminmakequery(request):
 			modified_at = datetime.datetime.now().date()
 			print((QuerytoAdmin.objects.filter(query=query, s_id_id=u)).count())
 			if(((QuerytoAdmin.objects.filter(query=query,s_id_id=u)).count())>0):
-				print((QuerytoAdmin.objects.filter(query=query, s_id_id=u)).count())
-				alertmessage="Query already posted"
-				context = {
-				'current' : w,
-				'admin_obj':v,
-				'alertmessage':alertmessage,
-			}
-				return HttpResponse(template.render(context,request))
+				alertmessage="Query already posted"				
 			else:
 				p1 = admin_row.querytoadmin_set.create(subject=subject,query=query,s_id_id = u,student_name=w.first_name,a_id=admin_row.a_id,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
 				p1.save()
-				alertmessage="Query successfully posted"	
-				context = {
+				alertmessage="Query successfully posted"
+			context = {
 				'current' : w,
 				'admin_obj':v,
 				'alertmessage':alertmessage,
-			}
-				return HttpResponse(template.render(context,request))
+			}	
+			return HttpResponse(template.render(context,request))
 			
 		return HttpResponse(template.render(context,request))
 	else:
@@ -343,22 +335,15 @@ def facultymakequery(request):
 			modified_at = datetime.datetime.now().date()
 			if(((Query.objects.filter(query=f_query) and Query.objects.filter(s_id_id=u)).count())>0):
 				alertmessage="Query already posted"
-				context = {
-				'current' : {'links':stu_courses ,'s':s},
-				'alertmessage':alertmessage,
-				}
-				return HttpResponse(template.render(context,request))
 			else:
 				p = faculty_row.query_set.create(subject=subject,query=f_query,s_id=s,student_name=student_name,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
 				p.save()
 				alertmessage="Query successfully posted"
-				context = {
+			context = {
 				'current' : {'links':stu_courses ,'s':s},
 				'alertmessage':alertmessage,
-				}
-				return render(request,'its/facultymakequery.html',context)				
-			# else:
-			# 	return HttpResponse(template.render(context,request))
+			}
+			return render(request,'its/facultymakequery.html',context)				
 		return HttpResponse(template.render(context,request))				
 	else:
 		return redirect('homepage')
@@ -384,6 +369,7 @@ def slides(request):
 				message = "Slides"
 			return render(request,'its/slides.html', {
 				'message':message,
+				'course':c_obj,
 				'obj': obj,
 				'current' : {'links':stu_courses ,'s':s}
 			})	
@@ -422,7 +408,12 @@ def login2(request):
 			f=faculty.objects.get(f_id=u2)
 			q = Query.objects.filter(f_id = u2)
 			template = loader.get_template('its/facultyhome.html')
+			if(q.count() == 0):
+				message = "No queries to display"
+			else:
+				message = "queries"
 			context = {
+				'message':message,
 				'current' : f ,
 				'queries' : q,
 			}
@@ -445,7 +436,14 @@ def facultyhome(request):
 		f=faculty.objects.get(f_id=x)
 		q = Query.objects.filter(f_id= x)
 		template = loader.get_template('its/facultyhome.html')
+		
+		if(q.count() == 0):
+			message = "No queries to display"
+		else:
+			message = "queries"
+		print(message)	
 		context = {
+			'message':message,
 			'current' : f ,
 			'queries' : q,
 		}
@@ -463,7 +461,13 @@ def postanswers(request):
 		f=faculty.objects.get(f_id=x)
 		faculty_queries = Query.objects.filter(f_id = x)
 		template = loader.get_template('its/postanswers.html')
+		if(faculty_queries.count() == 0):
+			message = "No queries to display"
+		else:
+			message = "queries"
+
 		context = {
+			'message':message,
 			'current' : {'f':f ,
    		 	'faculty_queries' : faculty_queries
 				}, 
@@ -598,10 +602,12 @@ def login3(request):
 			u3 = logged3.objects.all()[0].aid
 			a = college_admin.objects.get(a_id=u3)
 			template = loader.get_template('its/adminhome.html')
+			queries_to_admin = QuerytoAdmin.objects.filter(a_id = a)
 			l = Leave.objects.all()
 			context = {
 			'current' : a ,
 			'leave':l,
+			'queries':queries_to_admin,
 			}
 			
 			return HttpResponse(template.render(context,request))
@@ -625,10 +631,18 @@ def adminhome(request):
 		z=logged3.objects.all()[0].aid
 		a=college_admin.objects.get(a_id=z)
 		l = Leave.objects.all()
+		s = len(student.objects.all())
+		q = len(QuerytoAdmin.objects.all())
+		e = len(Events.objects.all())
+		f = len(faculty.objects.all())
 		queries_to_admin = QuerytoAdmin.objects.filter(a_id = z)
 		template = loader.get_template('its/adminhome.html')
 		context = {
 			'current' : a ,
+			's':s,
+			'q':q,
+			'e':e,
+			'f':f,
 			'leave':l,
 			'queries':queries_to_admin,
 		}
@@ -646,7 +660,7 @@ def addevents(request):
 		if request.method=='POST':
 			e = Events.objects.count()
 			event_name = request.POST.get('event_name', False)
-			if Events.objects.get(event_name = event_name) != False:
+			if Events.objects.filter(event_name = event_name) != False:
 				description = request.POST.get('description', False)
 				schedule = request.POST.get('schedule', False)
 				p = Events.objects.create(event_id=e+1,event_name=event_name,description=description,schedule=schedule)
@@ -926,138 +940,146 @@ def getDate(s):
 	day = int(d[2])
 	return datetime.date(year,month,day)
 def adminupdateattendence(request):
-	x=logged3.objects.all()[0].aid
-	a = college_admin.objects.get(a_id = x)
-	if request.method == 'POST' and request.FILES['myfile']:
-		fs = FileSystemStorage()
-		myfile = request.FILES['myfile']
-		filename = fs.save('attendence/'+ myfile.name, myfile)
-		uploaded_file_url = fs.url(filename)
-		uploadattendence.objects.create(a_id = a, sheet = uploaded_file_url)
-		wb = openpyxl.load_workbook(myfile)
-		worksheet = wb["Sheet1"]
-		excel_data = list()
-		row_data = list()
-		for row in worksheet.iter_rows():
-			for cell in row:
-				row_data.append(cell.value)
-			s = student.objects.get(s_id = row_data[0])
-			if(row_data[2]=='P'):
-				row_data[2]= True
-			else:
-				row_data[2] = False	
-			update = s.attendance_set.create(s_id = s.s_id,c_id = row_data[1],mark = row_data[2],date = row_data[3])
-			update.save()
-			cur_s = s.s_id
-			cur_c = row_data[1]
-			t = trackattendence.objects.all()
-			if t.filter(s_id = cur_s) and t.filter(c_id = cur_c):
-				cur = trackattendence.objects.filter(s_id = cur_s)
-				for c in cur:
-					if(c.c_id == cur_c):
-						c.no_classes = c.no_classes + 1
-						if(row_data[2]==True):
-							c.present = c.present + 1
-						else:
-							c.abscent = c.abscent + 1
-						c.percent = c.present*100
-						c.percent = c.percent / c.no_classes
-						c.save()
-			else:
-				new_entry = trackattendence()
-				new_entry.s_id = s
-				new_entry.c_id = cur_c
-				c = course.objects.get(c_id = cur_c)
-				new_entry.course_name = c.course_name
-				new_entry.no_classes = 1
-				if(row_data[2]==True):
-					new_entry.present = 1
-					new_entry.abscent = 0
+	if(request.session.get("aid",False)!=False):
+		x=logged3.objects.all()[0].aid
+		a = college_admin.objects.get(a_id = x)
+		if request.method == 'POST' and request.FILES['myfile']:
+			fs = FileSystemStorage()
+			myfile = request.FILES['myfile']
+			filename = fs.save('attendence/'+ myfile.name, myfile)
+			uploaded_file_url = fs.url(filename)
+			uploadattendence.objects.create(a_id = a, sheet = uploaded_file_url)
+			wb = openpyxl.load_workbook(myfile)
+			worksheet = wb["Sheet1"]
+			excel_data = list()
+			row_data = list()
+			for row in worksheet.iter_rows():
+				for cell in row:
+					row_data.append(cell.value)
+				s = student.objects.get(s_id = row_data[0])
+				if(row_data[2]=='P'):
+					row_data[2]= True
 				else:
-					new_entry.present = 0
-					new_entry.abscent = 1
-				new_entry.percent = new_entry.present*100
-				new_entry.percent = new_entry.percent / new_entry.no_classes
-				new_entry.save()
-			row_data = []
-	# if request.FILES['myfile'] == False:
-	# else:
-	# 	alertmessage = "Please Select File"
-	# 	context = {
-	# 		'current' : a,
-	# 		'alertmessage':alertmessage, 
-	# 	}
-	# 	return render(request,'its/adminupdateattendence.html',context)
-	return render(request,'its/adminupdateattendence.html')
+					row_data[2] = False	
+				update = s.attendance_set.create(s_id = s.s_id,c_id = row_data[1],mark = row_data[2],date = row_data[3])
+				update.save()
+				cur_s = s.s_id
+				cur_c = row_data[1]
+				t = trackattendence.objects.all()
+				if t.filter(s_id = cur_s) and t.filter(c_id = cur_c):
+					cur = trackattendence.objects.filter(s_id = cur_s)
+					for c in cur:
+						if(c.c_id == cur_c):
+							c.no_classes = c.no_classes + 1
+							if(row_data[2]==True):
+								c.present = c.present + 1
+							else:
+								c.abscent = c.abscent + 1
+							c.percent = c.present*100
+							c.percent = c.percent / c.no_classes
+							c.save()
+				else:
+					new_entry = trackattendence()
+					new_entry.s_id = s
+					new_entry.c_id = cur_c
+					c = course.objects.get(c_id = cur_c)
+					new_entry.course_name = c.course_name
+					new_entry.no_classes = 1
+					if(row_data[2]==True):
+						new_entry.present = 1
+						new_entry.abscent = 0
+					else:
+						new_entry.present = 0
+						new_entry.abscent = 1
+					new_entry.percent = new_entry.present*100
+					new_entry.percent = new_entry.percent / new_entry.no_classes
+					new_entry.save()
+				row_data = []
+		# if request.FILES['myfile'] == False:
+		# else:
+		# 	alertmessage = "Please Select File"
+		# 	context = {
+		# 		'current' : a,
+		# 		'alertmessage':alertmessage, 
+		# 	}
+		# 	return render(request,'its/adminupdateattendence.html',context)
+		return render(request,'its/adminupdateattendence.html')
 
-
+	else:
+		return redirect('homepage')	
 
 def trackattendance(request):
-	x=logged.objects.all()[0].sid
-	s=student.objects.get(s_id=x)
-	attenddencetrack = trackattendence.objects.filter(s_id = s.s_id)
-	context={ 'attenddencetrack' : attenddencetrack,'current':s}
-	template = loader.get_template('its/trackattendance.html')
-	return HttpResponse(template.render(context,request))
-
-
+	if(request.session.get("id",False)!=False):
+		x=logged.objects.all()[0].sid
+		s=student.objects.get(s_id=x)
+		attenddencetrack = trackattendence.objects.filter(s_id = s.s_id)
+		context={ 'attenddencetrack' : attenddencetrack,'current':s}
+		template = loader.get_template('its/trackattendance.html')
+		return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')	
 
 from django.db.models import Q
 
 def facultyupdateclasses(request):
-	x = logged2.objects.all()[0].fid
-	f = faculty.objects.get(f_id = x)
-	c = f.course_off
-	courses_list = c.split(',')
-	d = days.objects.all()
-	template = loader.get_template('its/facultyupdateclasses.html')
-	context = {
-		'courses_list':courses_list,
-		'current':f,
-		'd': d
-	}
-	return HttpResponse(template.render(context,request))
-
+	if(request.session.get("fid",False)!=False):
+		x = logged2.objects.all()[0].fid
+		f = faculty.objects.get(f_id = x)
+		c = f.course_off
+		courses_list = c.split(',')
+		d = days.objects.all()
+		template = loader.get_template('its/facultyupdateclasses.html')
+		context = {
+			'courses_list':courses_list,
+			'current':f,
+			'd': d
+		}
+		return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')	
 
 def checkslots(request):
-	up = rescheduled.objects.all()
-	pd = datetime.datetime.now().date()
-	for i in up:
-		if(pd > i.date):
-			i.delete()
-	if request.method=='POST':
-		course = request.POST.get('course',False)
-		d = request.POST.get('date',False)
-		month = datetime.date(int(d[0:4]), int(d[5:7]),int(d[8:10])).strftime('%B')
-		string=month+' '+str(d[8:10])+', '+str(d[0:4])
-		day=datetime.datetime.strptime(string, '%B %d, %Y').strftime('%A')
-		d1 = days.objects.get(day = day).day_id
-		name = days.objects.get(day_id = d1)
-		s = timetable.objects.filter(day_id = d1 , courses = "NoClass")
-		print (s)
-		#Entry.objects.filter(~Q(id = 3))
-		res = rescheduled.objects.filter(date = d)
-		print(res)
-		slots = []
-		
-		for i in s:
-			slots.append(i)
-		
-		for i in s:
-			for j in res:
-				if(i.timeslots == j.timeslots):
-					slots.remove(i)
+	if(request.session.get("fid",False)!=False):
+		up = rescheduled.objects.all()
+		pd = datetime.datetime.now().date()
+		for i in up:
+			if(pd > i.date):
+				i.delete()
+		if request.method=='POST':
+			course = request.POST.get('course',False)
+			d = request.POST.get('date',False)
+			month = datetime.date(int(d[0:4]), int(d[5:7]),int(d[8:10])).strftime('%B')
+			string=month+' '+str(d[8:10])+', '+str(d[0:4])
+			day=datetime.datetime.strptime(string, '%B %d, %Y').strftime('%A')
+			d1 = days.objects.get(day = day).day_id
+			name = days.objects.get(day_id = d1)
+			s = timetable.objects.filter(day_id = d1 , courses = "NoClass")
+			print (s)
+			#Entry.objects.filter(~Q(id = 3))
+			res = rescheduled.objects.filter(date = d)
+			print(res)
+			slots = []
+			
+			for i in s:
+				slots.append(i)
+			
+			for i in s:
+				for j in res:
+					if(i.timeslots == j.timeslots):
+						slots.remove(i)
 
-		print (slots)			
+			print (slots)			
 
-		count = 0;
-		for i in slots :
-			count = count + 1 ; 
-		template = loader.get_template('its/updateclasses.html')
-		context = { 'slots' : slots, 'name' : name.day, 'course' : course , 'count' : count ,'d' : d }
-		return HttpResponse(template.render(context,request))
-
+			count = 0
+			for i in slots :
+				count = count + 1 ; 
+			template = loader.get_template('its/updateclasses.html')
+			context = { 'slots' : slots, 'name' : name.day, 'course' : course , 'count' : count ,'d' : d }
+			return HttpResponse(template.render(context,request))
+	else:
+		return redirect('homepage')	
 def reschedule(request):
+
 	if request.method=='POST':
 		s = request.POST.get('slot',False)
 		c = request.POST.get('course',False)

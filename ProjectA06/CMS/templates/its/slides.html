@@ -9,8 +9,7 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
-  <title>StudentHome</title>
+  <title>Slides</title>
 </head>
 
 <body>
@@ -43,22 +42,22 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown mr-3">
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <i class="fas fa-user"></i>{{ current.s.first_name }} 
+          <li class="nav-item dropdown mr-3">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <i class="fas fa-user"></i>{{ current.s.first_name }} 
+            </a>
+            <div class="dropdown-menu">
+              <a href="{% url 'studentprofile' %}" class="dropdown-item">
+                <i class="fas fa-user-circle"></i> Profile
               </a>
-              <div class="dropdown-menu">
-                <a href="{% url 'studentprofile' %}" class="dropdown-item">
-                  <i class="fas fa-user-circle"></i> Profile
-                </a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a href="{% url 'logout' %}" class="nav-link">
-                <i class="fas fa-user-times"></i> Logout
-              </a>
-            </li>
-          </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'logout' %}" class="nav-link">
+              <i class="fas fa-user-times"></i> Logout
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -70,12 +69,11 @@
         <div class="col-md-6">
           
           <h1>
-        Slides</h1>
+            Student</h1>
         </div>
       </div>
     </div>
   </header>
-
 
 <section id="details">
         <div class="container">
@@ -112,6 +110,7 @@
                         </table>
                         {% endif%}
                       {% if message == "Slides" %}
+                      <h2>{{ course.course_name }}</h2>
                             <table class="table">
                                     <thead>
                                       <tr>

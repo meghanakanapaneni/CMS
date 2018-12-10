@@ -30,7 +30,7 @@
             <a href="{% url 'postanswers' %}" class="nav-link">Answer queries</a> 
           </li> 
           <li class="nav-item px-2"> 
-            <a href="#" class="nav-link">Update classes</a> 
+            <a href="{% url 'facultyupdateclasses'%}" class="nav-link">Update classes</a> 
           </li> 
         </ul> 
  
@@ -39,11 +39,6 @@
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> 
               <i class="fas fa-user"></i>{{ current.f.fac_name}}
             </a> 
-            <!-- <div class="dropdown-menu"> 
-              <a href=" 'profile' " class="dropdown-item"> 
-                <i class="fas fa-user-circle"></i> Profile 
-              </a> 
-            </div> --> 
           </li> 
           <li class="nav-item"> 
             <a href="{% url 'homepage' %}" class="nav-link"> 
@@ -79,6 +74,15 @@
             <div class="card-header"> 
               <h4>Latest Queries</h4> 
             </div> 
+            {% if message == "No queries to display" %}
+            <table class="table table-striped">
+              <tr>
+                <td>{{ message }}</td>
+              </tr>
+            </table>
+            {% endif %}
+            {% if message == "queries" %}
+
             <table class="table table-striped"> 
               <thead class="thead-dark"> 
                 <tr> 
@@ -124,7 +128,7 @@
                  
               </tbody>            
             </table> 
-  
+          {% endif %}  
           </div> 
         </div> 
       </div> 

@@ -81,9 +81,9 @@ DATABASES = {
         #'PASSWORD':'deeksha@982',
         #'HOST':'localhost',
 
-        'USER': 'admin1',
-        'PASSWORD': 'Remotemimi@98',
-        'HOST': '139.59.6.13',
+        'USER': 'ec_lab_user',
+        'PASSWORD': 'group3@ASE',
+        'HOST': '18.217.23.187',
         'PORT': '3306',
     }
 }

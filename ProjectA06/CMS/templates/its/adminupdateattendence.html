@@ -47,14 +47,14 @@
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data" action = "{% url 'adminupdateattendence' %}">
                     {% csrf_token %}
-                    <label for="file">Upload Exel Sheet</label>
+                    <label for="file">Upload Excel Sheet</label>
                     <div class="custom-file">
                       <div class="col-5">
-                          <input type="file" class="custom-file-input" id="image" name = "myfile">
+                          <input type="file" class="custom-file-input" id="image" name = "myfile" onchange="doSomething1(this.value)"  required>
                           <label for="file" class="custom-file-label">Choose File</label>
                     </div>
                   </div>
-                    <input type="submit" value="Submit">
+                    <input type="submit" id="submitId" value="Submit" disabled="true">
                     {% if alertmessage == "Please Select File"  %}
                     <div class="modal" id="myModal">
                         <div class="modal-dialog">
@@ -135,6 +135,15 @@
     $('#year').text(new Date().getFullYear());
 
     CKEDITOR.replace('editor1');
+  </script>
+ <script>
+    function doSomething1(text)
+  {
+    if (text.length > 0)
+      document.getElementById("submitId").disabled = false;
+    else
+      document.getElementById("submitId").disabled = true;
+  }
   </script>
 </body>
 

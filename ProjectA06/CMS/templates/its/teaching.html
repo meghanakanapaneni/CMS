@@ -29,7 +29,7 @@
             <a href="{% url 'postanswers' %}" class="nav-link">Answer queries</a>
           </li>
           <li class="nav-item px-2">
-            <a href="#" class="nav-link">Update classes</a>
+            <a href="{% url 'facultyupdateclasses'%}" class="nav-link">Update classes</a>
           </li>
         </ul>
 
@@ -124,19 +124,19 @@
                     <input type="text" class = "form-control" value="IR" name = "course"> -->
                   <div class = "col-4">
                     <label for="Topic">Topic</label>
-                    <input type="text" class = "form-control" value="" name = "topic" required>
+                    <input type="text" class = "form-control" value="" name = "topic"  required>
                   </div>
                 <div class = "col-4">  
                     <label for="Readings">Readings</label>                    
-                    <input type="text" class = "form-control" value="" name = "readings" required>
+                    <input type="text" class = "form-control" value="" name = "readings"  required>
                   </div>
                 </div>
                     <label for="file">Upload File</label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="image" name = "myfile" required>
+                        <input type="file" class="custom-file-input" id="image" name = "myfile" onchange="doSomething1(this.value)" required>
                         <label for="file" class="custom-file-label">Choose File</label>
                     </div>
-                    <input type="submit" value="Submit" data-toggle="modal" data-target="#myModal">
+                    <input type="submit" value="Submit" id="submitId" data-toggle="modal" data-target="#myModal" disabled="true">
                     {% if alertmessage == "Slides are successfully posted" %}
                     <div class="modal" id="myModal">
                         <div class="modal-dialog">
@@ -198,6 +198,16 @@
     // Get the current year for the copyright
     $('#year').text(new Date().getFullYear());
     $('#myModal').modal('show');
+  </script>
+  <script>
+  
+  function doSomething1(text)
+  {
+    if (text.length > 0)
+      document.getElementById("submitId").disabled = false;
+    else
+      document.getElementById("submitId").disabled = true;
+  }
   </script>
 </body>
 
