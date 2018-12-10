@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
-  <title>AddEvent</title>
+  <title>Display students</title>
 </head>
 
 <body>
@@ -71,6 +71,7 @@
 
   <!-- SEARCH -->
   
+
   <!-- USERS -->
   <section id="users">
     <div class="container">
@@ -86,7 +87,6 @@
                   <th>S.No</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -98,11 +98,7 @@
                   <td>{{ students.s_id }}</td>
                   <td>{{ students.first_name }} {{ students.last_name }}</td>
                   <td>{{ students.email }}</td>
-                  <td>
-                    <a href="{% url 'adminanswerqueries' %}" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Answer
-                    </a>
-                  </td>
+                  
                 </tr>
               
            {% endfor %}
@@ -113,7 +109,7 @@
                 
               </tbody>           
             </table>
-            <nav class="ml-4">
+            <!-- <nav class="ml-4">
               <ul class="pagination">
                 <li class="page-item disabled">
                   <a href="#" class="page-link">Previous</a>
@@ -131,7 +127,7 @@
                   <a href="#" class="page-link">Next</a>
                 </li>
               </ul>
-            </nav>
+            </nav> -->
           </div>
         </div>
       </div>

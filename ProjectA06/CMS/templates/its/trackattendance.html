@@ -47,16 +47,17 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown mr-3">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <i class="fas fa-user"></i> {{ current.first_name }}
+              <i class="fas fa-user"></i>{{current.first_name}}
             </a>
             <div class="dropdown-menu">
               <a href="{% url 'studentprofile' %}" class="dropdown-item">
                 <i class="fas fa-user-circle"></i> Profile
               </a>
+             
             </div>
           </li>
           <li class="nav-item">
-            <a href="{% url 'logout' %}" class="nav-link">
+            <a href="{% url 'homepage' %}" class="nav-link">
               <i class="fas fa-user-times"></i> Logout
             </a>
           </li>
@@ -92,8 +93,8 @@
                   
               
                 <tr>
-				  <th>#</th>
-				  <th>Course</th>
+          <th>#</th>
+          <th>Course</th>
                   <th>No of classes</th>
                   <th>Present</th>
                   <th>Absent</th>
@@ -101,26 +102,39 @@
                 </tr>
               </thead>
               <tbody>
-                
+                {% for item in attenddencetrack %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ item.course_name }}</td>
+                  <td>{{ item.no_classes}}</td>
+                  <td>{{ item.present }}</td>
+                  <td>{{ item.abscent }}</td>
+                  <!-- {% if 7 <= 5 %}
+                    <td style="color:'#ffffff'">{{ item.percent }}</td>
+                  {% else %} -->
+                  <td>{{ item.percent }}</td>
+                    <!-- {% endif%}  -->
+                  </tr>
+                {% endfor %}
                 <!--tr>
                   <td>1</td>
                   <td>Life Science</td>
                   <td>40</td>
                   <td>39</td>
-				  <td>1</td>
-				  <td>98%</td>
+          <td>1</td>
+          <td>98%</td>
                 </tr>
                 <tr>
                  <td>1</td>
                   <td>DIP</td>
                   <td>40</td>
                   <td>37</td>
-				  <td>3</td>
-				  <td>92%</td>
+          <td>3</td>
+          <td>92%</td>
                 </tr-->
               </tbody>
             </table>
-            <nav class="ml-4">
+            <!-- <nav class="ml-4">
               <ul class="pagination">
                 <li class="page-item disabled">
                   <a href="#" class="page-link">Previous</a>
@@ -138,7 +152,7 @@
                   <a href="#" class="page-link">Next</a>
                 </li>
               </ul>
-            </nav>
+            </nav> -->
           </div>
         </div>
       </div>

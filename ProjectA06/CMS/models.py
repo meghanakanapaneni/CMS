@@ -25,7 +25,7 @@ class student(models.Model):
 	dob = models.DateField()
 	gender = models.CharField(max_length=10)
 	mobile = models.CharField(max_length=15)
-	email = models.EmailField(max_length=30)
+	email = models.EmailField(max_length=50)
 	sem_id = models.IntegerField()
 	cur_yos = models.IntegerField()
 	reg_year = models.IntegerField()
@@ -44,7 +44,7 @@ class faculty(models.Model):
 	f_id = models.IntegerField(primary_key=True,default='1')
 	fac_name = models.CharField(max_length=100)
 	ph_no = models.CharField(max_length=15)
-	f_email = models.EmailField(max_length=30)
+	f_email = models.EmailField(max_length=50)
 	course_off = models.CharField(max_length=100)
 	fpswd = models.CharField(max_length = 100)
 	role_id = models.ForeignKey(role,on_delete=models.CASCADE)
@@ -58,7 +58,7 @@ class college_admin(models.Model):
 	a_id = models.IntegerField(primary_key=True,default='1')
 	ad_name = models.CharField(max_length=100)
 	role_id = models.ForeignKey(role,on_delete=models.CASCADE)
-	email = models.EmailField(max_length=30)
+	email = models.EmailField(max_length=50)
 	apswd = models.CharField(max_length = 100)
 	created_at = models.DateField(blank=True, null=True)
 	created_by = models.CharField(max_length=45, blank=True, null=True)
@@ -106,10 +106,28 @@ class Grade(models.Model):
 	modified_by = models.CharField(max_length=45, blank=True, null=True)
 
 class Attendance(models.Model):
-	date = models.DateField()
 	s_id = models.ForeignKey(student,on_delete=models.CASCADE)
-	c_id = models.ForeignKey(course,on_delete=models.CASCADE)
+	c_id = models.IntegerField(default = False)
 	mark = models.BooleanField(default=False)
+	date = models.DateField()
+	created_at = models.DateField(blank=True, null=True)
+	created_by = models.CharField(max_length=45, blank=True, null=True)
+	modified_at = models.DateField(blank=True, null=True)
+	modified_by = models.CharField(max_length=45, blank=True, null=True)
+	
+class uploadattendence(models.Model):
+	a_id = models.ForeignKey(college_admin,on_delete=models.CASCADE)
+	sheet = models.URLField(max_length = 100)
+	#sheet = models.FileField(storage='/media/attendence' , default = False)
+
+class trackattendence(models.Model):
+	s_id = models.ForeignKey(student,on_delete=models.CASCADE)
+	c_id = models.IntegerField(default = False)
+	course_name = models.CharField(max_length=100, blank=True, null=True)
+	no_classes = models.IntegerField(default = False)
+	present = models.IntegerField(default = 0)
+	percent = models.IntegerField(default = 0)
+	abscent = models.IntegerField(default = 0)
 	created_at = models.DateField(blank=True, null=True)
 	created_by = models.CharField(max_length=45, blank=True, null=True)
 	modified_at = models.DateField(blank=True, null=True)
@@ -139,7 +157,7 @@ class Query(models.Model):
 	def __str__(self):
 		return self.query
 
-class Querytoadmin(models.Model):
+class QuerytoAdmin(models.Model):
 	subject = models.CharField(max_length= 100)
 	query = models.CharField(max_length=300)
 	s_id = models.ForeignKey(student,on_delete=models.CASCADE)
@@ -185,7 +203,7 @@ class UploadSlides(models.Model):
 	def __str__(self):
 		return str(self.topic)
 class Notificationsfromfaculty(models.Model):
-	s_id = models.ForeignKey(student,on_delete=models.CASCADE)
+	s_id = models.IntegerField()
 	f_id = models.ForeignKey(faculty,on_delete=models.CASCADE)
 	subject = models.CharField(max_length= 100)
 	query=  models.CharField(max_length=300)
@@ -203,3 +221,17 @@ class Notificationsfromadmin(models.Model):
 	created_by = models.CharField(max_length=45, blank=True, null=True)
 	modified_at = models.DateField(blank=True, null=True)
 	modified_by = models.CharField(max_length=45, blank=True, null=True)
+
+
+
+
+class rescheduled(models.Model):
+	day_id = models.ForeignKey(days , on_delete = models.CASCADE)
+	timeslots = models.CharField(max_length=30)
+	courses = models.CharField(max_length=30)
+	date = models.DateField(blank=True, null=True)
+	created_at = models.DateField(blank=True, null=True)
+	created_by = models.CharField(max_length=45, blank=True, null=True)
+	modified_at = models.DateField(blank=True, null=True)
+	modified_by = models.CharField(max_length=45, blank=True, null=True)
+

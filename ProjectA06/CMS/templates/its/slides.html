@@ -96,10 +96,22 @@
                                   </ul>
                                 </ul>
                             </select><br/>
-                            <label for="submit">Submit</label>
                             <input type="submit" value="Submit" >
                     </form>
                     <div class= "container">
+                      
+                        {% if message == "No slides" %}
+                        <table class="table">
+                          <tbody>
+                            <tr>
+                              <td>
+                                {{ message }}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {% endif%}
+                      {% if message == "Slides" %}
                             <table class="table">
                                     <thead>
                                       <tr>
@@ -127,6 +139,7 @@
                                       
                                     </tbody>
                                   </table>
+                                  {% endif %}
                     </div>
                     
                      

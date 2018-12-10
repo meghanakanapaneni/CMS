@@ -1,0 +1,11 @@
+insert into cms_faculty(fac_name,froll_no,ph_no,course_off,description,role_id)values('Dr.Shiv Ram Dubey','F20160010001','8596472134','ITWS','Assistant Professor PhD (IIIT Allahabad)','2'),
+('Dr. Sivaprasad Kotamraju','F201440010001','9912567890','DEC','Assistant Professor PhD (Mississippi State University, USA)','2'),
+('Dr. Snehasis Mukherjee','F20130010002','8596414734','DM','Assistant Professor PhD (ISI Kolkatta)','2'),
+('Dr. Viswanath Pulabaigari','F20130010003','8596471234',AI','Associate Professor PhD (IISc Bangalore)','2'),
+('Dr. Rangeet Mitra','F20150010001','9234472134','DSP','Assistant Professor PhD (IIT Indore, India)','2'),
+('Dr. Rajendra Prasath','F20160010002','9966991245','DS','Associate professor PhD [CSE] (IIT-Kharagpur) , Ph.D [Maths-CS] (University of Madras)','2'),
+('Dr. Raja Vara Prasad Y','F20130010004','9267458612','EIS','Assistant Professor PhD (IIT Hyderabad)','2'),
+('Dr. Paul Braineard','F20140010002','9876543210','BEC','Assistant Professor PhD (IIT Madras)','2'),
+('Dr. Krishna Chaitanya A','F20130010005','9898986464','CCN','Assistant Professor PhD (IISc Bangalore)','2'),
+('Dr. Kandimalla Divyabramham','F20140010003','8754632190','LEC','Assistant Professor PhD (IIT Kharagpur)','2'),
+('Dr. Anish Chand Turlapaty','F20160010003','6637584196','DSAA','Assistant Professor PhD (Mississippi State University)','2')
