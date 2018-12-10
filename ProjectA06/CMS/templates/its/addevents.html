@@ -81,7 +81,7 @@
               <h4>Fill Details</h4>
             </div>
             <div class="card-body">
-              <form action="/its/addevents/" method="post" >
+              <form action="{% url 'addevents' %}" method="post" >
 		{% csrf_token %}
                 <div class="form-group row">
                     <div class="col-5">  

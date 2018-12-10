@@ -6,24 +6,7 @@ insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gende
 insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(2,"U.deeksha","deeksha","Ummadi","S20160010100","1999-08-30","female","9666484876","deeksha.u16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
 insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(3,"s.Renuka","ram","sajja","S20160020151","1999-09-17","Female","8179703917","renukaram.s16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
 insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(4,"T.abhishek","abhishek","Tripurana","S20160020154","1999-05-05","Male","9553522754","abhishek.t16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(5,"V.Raja","ramachandrarao","varri","S20160020157","1999-02-19","Male","7995101648","rajaramachandrarao.v16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
 insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(6,"K.Meghana","meghana","Kannapaneni","S20160010040","1999-03-03","Male","7013747335","meghana.k16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(7,"K.Anjali","Poornima","Karri","S20160020131","1999-12-06","Female","7036244444","anjali.k16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(8,"A.Dharani","Akurathi","Akurathi","S20160010003","1999-09-23","Female","9494342113","dharani.a16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(9,"Ch.padmini","Chennamsetty","Chennamsetty","S20160020120","1999-05-24","Female","8919429418","padmini.ch16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(10,"M.Soumya","Maheswaram","Maheswaram","S20160010051","1999-01-25","Female","9949190483","souwmya.m16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(11,"S.preethi","samala","samala","S20160010081","1998-10-15","Female","9515435369","preethi.s16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(12,"R.Navneeth","kumar","Raayavarapu","S20160010071","1999-07-21","Male","9160134919","navnith.r16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(13,"S.Harsha","Vardhan","Sri","S20160010093","1999-05-04","Male","8106182442","harshavardhan.s16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(14,"T.sai","kiran","Thammali","S20160010097","1999-09-25","Male","7093431197","saikiran.t16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(15,"M.Pranav","mejuri","mejuri","S20160020140","1999-05-03","Male","9490946478","pranav.m16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(16,"I.Wasim","khan","ishaq","S20160010107","1999-05-03","Male","9383993839","wasim.i16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(17,"v.sree","pragna","vinnakoti","S20160010106","1999-05-03","Female","9553522754","pragna.v16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(18,"m.parkhi","parkhi","mohan","S20160010061","1999-05-03","Female","9876543210","parkhi.m16@iiits.in",5,2018,2016,"parkhi@123",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(19,"j.sunil","sunil","jatavath","S20160010033","1999-05-03","Male","9898989898","sunil.j16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-insert into CMS_student(s_id,first_name,middle_name,last_name,sroll_no,dob,gender,mobile,email,sem_id,cur_yos,reg_year,spswd,role_id_id) values(20,"d.subhadeep","subhadeep","dash","S20160010021","1999-05-03","Male","9490967488","subhadeep.d16@iiits.in",5,2018,2016,"pbkdf2_sha256$120000$5ov8RXqjIqJS$FCDRWAUL+6QAC3bwwIhlp+PlCnWIx/+34H/km7QlhY0=",1);
-
-
 
 
 insert into CMS_faculty(f_id,fac_name,ph_no,f_email,course_off,fpswd,role_id_id) values(1,"Venkatesh Vinayakarao","7453324906","venkatesh.v@iiits.in","IR,PC","pbkdf2_sha256$120000$MdKiHuPVLp3t$9i9yMlkHLRKVxYOSgn6wMk7YjL86rl1t8MpwBd403NU=",2); 
@@ -47,7 +30,8 @@ insert into CMS_faculty(f_id,fac_name,ph_no,f_email,course_off,fpswd,role_id_id)
 insert into CMS_faculty(f_id,fac_name,ph_no,f_email,course_off,fpswd,role_id_id) values(19,"Amitava Das","7453324906","amitava.d@iiits.in","CO,OS","pbkdf2_sha256$120000$MdKiHuPVLp3t$9i9yMlkHLRKVxYOSgn6wMk7YjL86rl1t8MpwBd403NU=",2);
 insert into CMS_faculty(f_id,fac_name,ph_no,f_email,course_off,fpswd,role_id_id) values(20,"vodelu vanga","7453324906","vodelu.v@iiits.in","M-3","pbkdf2_sha256$120000$MdKiHuPVLp3t$9i9yMlkHLRKVxYOSgn6wMk7YjL86rl1t8MpwBd403NU=",2);
 insert into CMS_faculty(f_id,fac_name,ph_no,f_email,course_off,fpswd,role_id_id) values(21,"Rajendra Prasath","7453324906","shivaram.d@iiits.in","DS","pbkdf2_sha256$120000$MdKiHuPVLp3t$9i9yMlkHLRKVxYOSgn6wMk7YjL86rl1t8MpwBd403NU=",2);
-insert into CMS_faculty(f_id,fac_name,ph_no,f_email,course_off,fpswd,role_id_id) values(22,"Anishchand thurlapaty","7453324906","anishchand.t@iiits.in","DSAA","pbkdf2_sha256$120000$MdKiHuPVLp3t$9i9yMlkHLRKVxYOSgn6wMk7YjL86rl1t8MpwBd403NU=",2);  insert into CMS_faculty(f_id,fac_name,ph_no,f_email,course_off,fpswd,role_id_id) values(23,"Rangeeth mithra","7453324906","rangeeth.m@iiits.in","DSP","pbkdf2_sha256$120000$MdKiHuPVLp3t$9i9yMlkHLRKVxYOSgn6wMk7YjL86rl1t8MpwBd403NU=",2);  
+insert into CMS_faculty(f_id,fac_name,ph_no,f_email,course_off,fpswd,role_id_id) values(22,"Anishchand thurlapaty","7453324906","anishchand.t@iiits.in","DSAA","pbkdf2_sha256$120000$MdKiHuPVLp3t$9i9yMlkHLRKVxYOSgn6wMk7YjL86rl1t8MpwBd403NU=",2);  
+insert into CMS_faculty(f_id,fac_name,ph_no,f_email,course_off,fpswd,role_id_id) values(23,"Rangeeth mithra","7453324906","rangeeth.m@iiits.in","DSP","pbkdf2_sha256$120000$MdKiHuPVLp3t$9i9yMlkHLRKVxYOSgn6wMk7YjL86rl1t8MpwBd403NU=",2);  
                                                       
                                                     
 
@@ -60,8 +44,6 @@ insert into CMS_course(c_id,sem_id,course_name,f_id_id,c_credit) values(2,1,"DEC
 insert into CMS_course(c_id,sem_id,course_name,f_id_id,c_credit) values(3,1,"IT-1",16,4);
 insert into CMS_course(c_id,sem_id,course_name,f_id_id,c_credit) values(4,1,"MATHS",17,4);
 insert into CMS_course(c_id,sem_id,course_name,f_id_id,c_credit) values(5,1,"COMMSKILLS-1",18,2);
-
-
 insert into CMS_course(c_id,sem_id,course_name,f_id_id,c_credit) values(6,2,"BEC",14,4);
 insert into CMS_course(c_id,sem_id,course_name,f_id_id,c_credit) values(7,2,"ITWS-2",4,4);
 insert into CMS_course(c_id,sem_id,course_name,f_id_id,c_credit) values(8,2,"M-2",17,4);
@@ -248,120 +230,62 @@ insert into CMS_grade(s_id_id,c_id_id,grades,points) values(3,24,"A-",9);
 insert into CMS_grade(s_id_id,c_id_id,grades,points) values(3,25,"A-",9);
 
 
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,5,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,1,"B-",7);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,2,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,3,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,4,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,5,"A-",9);
 
 
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,11,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,6,"B-",7);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,7,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,8,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,9,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,10,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,11,"A-",9);
 
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,17,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,12,"B-",7);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,13,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,14,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,15,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,16,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,17,"A-",9);
 
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(6,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,5,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,18,"B-",7);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,19,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,20,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,21,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,24,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(4,25,"A-",9);
 
 
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,22,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,23,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(7,25,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,1,"B-",7);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,2,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,3,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,4,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,5,"A-",9);
 
 
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,5,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,6,"B-",7);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,7,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,8,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,9,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,10,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,11,"A-",9);
 
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,12,"B-",7);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,13,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,14,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,15,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,16,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,17,"A-",9);
 
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(8,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(9,25,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,18,"B-",7);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,19,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,20,"B",8);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,22,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,23,"A-",9);
+insert into CMS_grade(s_id_id,c_id_id,grades,points) values(24,25,"A-",9);
 
 
 insert into CMS_grade(s_id_id,c_id_id,grades,points) values(10,1,"B-",7);
@@ -393,303 +317,19 @@ insert into CMS_grade(s_id_id,c_id_id,grades,points) values(10,24,"A-",9);
 insert into CMS_grade(s_id_id,c_id_id,grades,points) values(10,25,"A-",9);
 
 
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(11,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(12,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(13,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(14,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(15,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(16,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(17,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,86,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(18,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,22,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,23,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(19,25,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,1,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,2,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,3,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,4,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,5,"A-",9);
-
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,6,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,7,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,8,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,9,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,10,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,11,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,12,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,13,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,14,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,15,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,16,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,17,"A-",9);
-
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,18,"B-",7);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,19,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,20,"B",8);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,21,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,24,"A-",9);
-insert into CMS_grade(s_id_id,c_id_id,grades,points) values(20,25,"A-",9);
 
 
 
-insert into CMS_registeredcourses(courses,s_id_id) values("IR,TOC,SDS,DM,DIP",17)
-insert into CMS_registeredcourses(courses,s_id_id) values("IR,TOC,DE,LS,DIP",3)
-insert into CMS_registeredcourses(courses,s_id_id) values("EMT,Digicomm,DE,LS",411)
-insert into CMS_registeredcourses(courses,s_id_id) values("EMT,Digicomm,DE,LS,DIP",34)
+insert into CMS_registeredcourses(courses,s_id_id) values("IR,TOC,SDS,DM,DIP",17);
+insert into CMS_registeredcourses(courses,s_id_id) values("IR,TOC,DE,LS,DIP",3);
+insert into CMS_registeredcourses(courses,s_id_id) values("EMT,Digicomm,DE,LS",411);
+insert into CMS_registeredcourses(courses,s_id_id) values("EMT,Digicomm,DE,LS,DIP",34);
+insert into CMS_registeredcourses(courses,s_id_id) values("IR,TOC,SDS,DM,DIP",24);
+insert into CMS_registeredcourses(courses,s_id_id) values("IR,TOC,SDS,DM,DIP",4);
+insert into CMS_registeredcourses(courses,s_id_id) values("IR,TOC,SDS,DM,DIP",211);
 
- insert into CMS_Days(day_id,day)values(1,"Monday"),(2,"Tuesday"),(3,"Wednesday"),(4,"Thursday"),(5,"Friday"),(6,"Saturday"),(7,"Sunday");
+
+insert into CMS_days(day_id,day)values(1,"Monday"),(2,"Tuesday"),(3,"Wednesday"),(4,"Thursday"),(5,"Friday"),(6,"Saturday"),(7,"Sunday");
 
 insert into CMS_timetable(day_id_id,timeslots,courses)values(1,"9:00-10:00","DM"),(1,"10:00-11:00","IOT"),(1,"11:00-11:15","ShortBreak"),(1,"11:15-12:15","Digicomm"),(1,"12:15-13:15","IR"),(1,"13:15-14:30","LunchBreak"),(1,"14:30-15:30","CSD"),(1,"15:30-16:30","NoClass"),(1,"16:30-17:30","EMT"),(1,"17:30-18:30","DIP");
 insert into CMS_timetable(day_id_id,timeslots,courses)values(2,"9:00-10:00","CSD"),(2,"10:00-11:00","MERS"),(2,"11:00-11:15","ShortBreak"),(2,"11:15-12:15","SDS,DE"),(2,"12:15-13:15","TOC,Digicomm"),(2,"13:15-14:30","LunchBreak"),(2,"14:30-15:30","NoClass"),(2,"15:30-16:30","NoClass"),(2,"16:30-17:30","LS,GE"),(2,"17:30-18:30","IR,VLSI");
