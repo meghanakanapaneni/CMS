@@ -68,6 +68,24 @@
       </div>
     </div>
   </header>
+    <style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+ <a href="{% url 'adminhome' %}" >
+  <button class="button">Back</button>
+</a>
 <br>
 <br>
 <br>
@@ -133,18 +151,15 @@
     </div>
   </section>
 
- <section id="actions" class="py-4 mb-4 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
+<div align="left">
+   
           <a href="{% url 'adminhome' %}" class="btn btn-light btn-block">
-            <i class="fas fa-arrow-left"></i> Back To homepage
+           <button class="fas fa-arrow-left" style="float:left">Back</button>
+ 
           </a>
-        </div>
-        
-      </div>
-    </div>
-  </section>
+      
+     
+</div> 
 
 
   <!-- FOOTER -->

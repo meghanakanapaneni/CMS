@@ -436,12 +436,11 @@ def facultyhome(request):
 		f=faculty.objects.get(f_id=x)
 		q = Query.objects.filter(f_id= x)
 		template = loader.get_template('its/facultyhome.html')
-		
+		results=UploadSlides.view_uploads(x)
 		if(q.count() == 0):
 			message = "No queries to display"
 		else:
-			message = "queries"
-		print(message)	
+			message = "queries"	
 		context = {
 			'message':message,
 			'current' : f ,
@@ -493,7 +492,7 @@ def facultyanswerqueries(request):
 			created_at = datetime.datetime.now().date()
 			modified_by = v.fac_name
 			modified_at = datetime.datetime.now().date()
-			print(query)
+			#print(query)
 			p = Notificationsfromfaculty.objects.create(subject=q1,query=query,s_id=s1,f_id_id=y,created_at= created_at,created_by = created_by,modified_at= modified_at,modified_by= modified_by)
 			p.save()
 			Notificationsfromfaculty.objects.filter(query="Nothing").delete()
@@ -533,10 +532,13 @@ def teaching(request):
 		f = faculty.objects.get(f_id = x)
 		c = f.course_off
 		courses_list = c.split(',')
+		results=UploadSlides.view_uploads(x)
+
 		#print(courses_list)
 		context = {
+			'results':results,
 			'courses_list':courses_list,
-			'current':f
+			'current':f,
 		}
 		if request.method == 'POST' and request.FILES['myfile']:
 			x=logged2.objects.all()[0].fid
@@ -995,14 +997,6 @@ def adminupdateattendence(request):
 					new_entry.percent = new_entry.percent / new_entry.no_classes
 					new_entry.save()
 				row_data = []
-		# if request.FILES['myfile'] == False:
-		# else:
-		# 	alertmessage = "Please Select File"
-		# 	context = {
-		# 		'current' : a,
-		# 		'alertmessage':alertmessage, 
-		# 	}
-		# 	return render(request,'its/adminupdateattendence.html',context)
 		return render(request,'its/adminupdateattendence.html')
 
 	else:
@@ -1054,10 +1048,10 @@ def checkslots(request):
 			d1 = days.objects.get(day = day).day_id
 			name = days.objects.get(day_id = d1)
 			s = timetable.objects.filter(day_id = d1 , courses = "NoClass")
-			print (s)
+			#print (s)
 			#Entry.objects.filter(~Q(id = 3))
 			res = rescheduled.objects.filter(date = d)
-			print(res)
+			#print(res)
 			slots = []
 			
 			for i in s:
@@ -1068,7 +1062,7 @@ def checkslots(request):
 					if(i.timeslots == j.timeslots):
 						slots.remove(i)
 
-			print (slots)			
+			#print (slots)			
 
 			count = 0
 			for i in slots :
