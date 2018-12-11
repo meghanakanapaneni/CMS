@@ -81,7 +81,20 @@ def login1(request):
 			queries_fac = Notificationsfromfaculty.objects.filter(s_id = s.s_id).only('f_id','subject','query')
 			queries_from_admin =Notificationsfromadmin.objects.filter(s_id = s.s_id).only('a_id','subject','query')
 			template = loader.get_template('its/studenthome.html')
-			
+			v=registeredcourses.objects.get(s_id=x)	
+			cs=v.courses
+			list1=[]
+			r=rescheduled.objects.all()
+
+			stu_courses=cs.split(',')
+			for i in stu_courses:
+				for j in r:
+					if(i==j.courses):
+						list1.append(j)
+			if (len(list1) == 0):
+				message3 = "Notifications on classes"
+			else:
+				message3 = "Notifications"
 			if(queries_fac.count() == 0):
 				message="No notifications from faculty"
 			else:	
@@ -97,6 +110,8 @@ def login1(request):
 				'queries':queries_fac,
 				'message':message,
 				'message1':message1,
+				'message3':message3,
+				'list1':list1,
 			}
 			return HttpResponse(template.render(context,request))
 
@@ -109,6 +124,21 @@ def studenthome(request):
 		queries_fac = Notificationsfromfaculty.objects.filter(s_id = s.s_id).only('f_id','subject','query')
 		queries_from_admin =Notificationsfromadmin.objects.filter(s_id = s.s_id).only('a_id','subject','query')
 		template = loader.get_template('its/studenthome.html')
+		v=registeredcourses.objects.get(s_id=x)	
+		cs=v.courses
+		list1=[]
+		r=rescheduled.objects.all()
+
+		stu_courses=cs.split(',')
+		for i in stu_courses:
+			for j in r:
+				if(i==j.courses):
+					list1.append(j)
+		
+		if (len(list1) == 0):
+			message3 = "Notifications on classes"
+		else:
+			message3 = "Notifications"
 		
 		if(queries_fac.count() == 0):
 			message="No notifications from faculty"
@@ -119,13 +149,15 @@ def studenthome(request):
 			message1="No notifications from admin"
 		else:	
 			message1 = "Notifications"
-		print(message,message1)
+		
 		context = {
 				'current':s,
 				'queries_from_admin':queries_from_admin,
 				'queries':queries_fac,
 				'message':message,
 				'message1':message1,
+				'message3':message3,
+				'list1':list1,
 			}
 		return render(request,'its/studenthome.html',context)
 	else:
@@ -189,6 +221,12 @@ def trackaca1(request):
             logged.objects.all().delete()
             u = logged()
             u.sid = x
+            message ="empty"
+            message1 ="empty2"
+            if(int(semes) == 4):
+                message = "no further"
+            if(int(semes) == 1):
+                message1 = "no prev"
             if number == '1':
                 u.sem_id=int(semes)-1
             elif number == '2' :
@@ -217,7 +255,10 @@ def trackaca1(request):
         #print(int(semes))
         template = loader.get_template('its/trackaca1.html')
         context = {
-            'current' : { 's':s,'g':g ,'sgpa':sgpa , 'sem_id':sem_id1 ,'semes':int(semes)} 
+            'current' : { 's':s,'g':g ,'sgpa':sgpa , 'sem_id':sem_id1 ,'semes':int(semes),
+			'message':message,
+			'message':message1,
+			} 
         }
         return HttpResponse(template.render(context,request))
     else:
@@ -634,7 +675,7 @@ def adminhome(request):
 		a=college_admin.objects.get(a_id=z)
 		l = Leave.objects.all()
 		s = len(student.objects.all())
-		q = len(QuerytoAdmin.objects.all())
+		q = len(QuerytoAdmin.objects.filter(a_id = z))
 		e = len(Events.objects.all())
 		f = len(faculty.objects.all())
 		queries_to_admin = QuerytoAdmin.objects.filter(a_id = z)

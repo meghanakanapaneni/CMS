@@ -138,7 +138,7 @@
         <div class="col-md-9">
           <div class="card">
             <div class="card-header">
-              <h4>Notifications</h4>
+              <h4>Notifications from faculty</h4>
             </div>
             {% if message == "No notifications from faculty" %}
                        
@@ -175,6 +175,7 @@
                 </tbody>
             </table>
             {% endif %}
+            <h4>Notifications from admin</h4>
             {% if message1 == "No notifications from admin" %}
             <table class="table table-striped" >
               <tbody>
@@ -202,6 +203,40 @@
                     <td>{{item.a_id.ad_name}}</td>
                       <td>{{item.subject}}</td>
                       <td>{{item.query}}</td>
+                 
+                  </tr>  
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            <h4>Rescheduled Classes</h4>
+            {% if message3 == "Notifications on classes" %}
+            <table class="table table-striped" >
+              <tbody>
+                <tr>
+                  <td>{{ message3 }}</td>
+                </tr>
+              </tbody>
+            </table>
+            {% endif %}
+            {% if message3 == "Notifications" %}
+            <table class="table table-striped" id = "myTable">
+              <thead class="thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th >Subject</th>
+                  <th >Slot</th>
+                  <th >rescheduled to</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                {% for item in list1 %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{item.courses}}</td>
+                      <td>{{item.timeslots}}</td>
+                      <td>{{item.date}}</td>
                  
                   </tr>  
                 {% endfor %}

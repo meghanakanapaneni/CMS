@@ -137,24 +137,29 @@
           <div  class ="col-md-4">
             <form action="{% url 'trackaca1' %}/" method="post" >
               {% csrf_token %} 
+              {% if message1 != "no prev" %}
                 <div class="form-group">
                     <input type="hidden" name="prev" value="1">
                     <input type="hidden" name="semes" value="{{current.semes}}">             
                  <!--label for="category">Semester</label-->
                 </div>
-                 <input type="submit"  value="Previous"/>
+
+                  <input type="submit"  value="Previous"/>
+                {% endif %}
                   <!--input type="submit"  value="Next"/-->  
               </form>
           </div>
           <div class="col-md-4">
             <form action="{% url 'trackaca1' %}/" method="post" >
               {% csrf_token %} 
+              {% if message != "no further" %}
                 <div class="form-group">
                     <input type="hidden" name="prev" value="2">  
                     <input type="hidden" name="semes" value="{{current.semes}}">             
                 </div>
                   
                   <input type="submit"  value="Next"/>
+                  {% endif %}
                   <!--input type="submit"  value="Next"/-->  
               </form>
           </div>
