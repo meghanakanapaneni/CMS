@@ -1,0 +1,38 @@
+//to run project on external ubuntu system
+python3 -m pip install --user virtualenv
+
+python3 -m virtualenv env
+source env/bin/activate                         //start venv
+
+tar -zxf wheelhouse.tar.gz                      //unzip
+
+ 	 				        //remove pillow and mysqlient from requirements on errors(optional)
+
+pip install -r wheelhouse/requirements.txt --no-index --find-links wheelhouse  
+
+
+sudo add-apt-repository ppa:deadsnakes/ppa      //to install python3.6(optional)
+sudo apt-get update
+sudo apt-get install python3.6                  //make python3.6 deafault on system(search internet)
+
+//to use local db instead of online replace block in iiitscart/iiitscart/setting.py
+//drop if ixist create db named iiitscart
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'USER': 'root',
+        'PASSWORD': 'ROCKROLL',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
+//and delete all fies under migrations/ except "_init_.py"
+python manage.py migrate //make migrations
+python manage.py makemigrations
+
+
+
+mysql -u username -p database_name < backup_name.sql - 2nd
+mysqldump -P 3306 -h 139.59.6.13 -u admin1 -p'Remotemimi@98' iiitscart > db_backup.sql - 1st

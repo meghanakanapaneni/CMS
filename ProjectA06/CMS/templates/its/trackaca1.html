@@ -76,7 +76,15 @@
       </div>
     </div>
   </header>
-
+<div align="left">
+   
+          <a href="{% url 'studenthome' %}" class="btn btn-light btn-block">
+           <button class="fas fa-arrow-left" style="float:left">Back</button>
+ 
+          </a>
+      
+     
+</div> 
    <br> <br>
 
   <!-- USERS -->
@@ -94,7 +102,7 @@
               <thead class="thead-dark">
                
                 <tr><h4>Semester {{current.sem_id}} </h4>
-				  <th>#</th>
+				 
 				  <th>Course</th>
                   <th>Grade</th>
                   <th>Semester</th>
@@ -105,7 +113,6 @@
                         {% if grade.c_id.sem_id == current.sem_id %}
                   
                 <tr>  
-                     <td> {{forloop.counter}}</td>
                       <td>{{ grade.c_id.course_name}}</td>
                       <td>{{ grade.grades}}</td>
                       <td>{{ grade.c_id.sem_id}}</td>

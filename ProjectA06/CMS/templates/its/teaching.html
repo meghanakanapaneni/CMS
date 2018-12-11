@@ -12,6 +12,21 @@
   <link rel="stylesheet" href="css/style.css">
   <title>Teaching</title>
 </head>
+<style>
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  </style>
 
 <body>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
@@ -82,7 +97,13 @@
       </div>
     </div>
   </section-->
-  <section id="Post Slides">
+  <div align="left">
+   
+    <a href="{% url 'facultyhome' %}" class="btn btn-light btn-block">
+     <button class="fas fa-arrow-left" style="float:left">Back</button>
+
+    </a>
+      <section id="Post Slides">
       <div class="container">
         <div class="row">
           <div class="col">
@@ -107,15 +128,7 @@
                       </ul>
                     </ul>
                     </select>
-                  </div>
-
-              </div>
-                    <br/>
-            </div>           
-          </div>
-        </div>
-      </div>
-        
+                  
           
             <div class= "container">
               <div class= "form-group">
@@ -170,7 +183,38 @@
           </form>
         
     </section>
-
+    <section id="Post Slides">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Uploaded Slides</h4>
+                </div><br/>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Lecture</th>
+                      <th scope="col">Topic</th>
+                      <th scope="col">Readings</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for slide in results %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{ slide.0 }}</td>
+                        <td>{{ slide.1 }}</td>
+                        <td><a href="{{slide.docfile}}" target="{{forloop.counter}}">{{slide.docfile}}</a></td>
+                    </tr>
+                    {% endfor %}
+                  
+                  </tbody>
+                </table>
+              </div>
+        </div>
+      </div>
+    </div>
   <!-- FOOTER -->
   <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
     <div class="container">
