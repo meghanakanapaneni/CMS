@@ -1,1 +1,3 @@
-# ASE-2-CMS
+#College Management System
+#Django framework
+#Mysql database
